@@ -5,7 +5,15 @@
   <% if (user?.role === 0) { %>
     <h1>No Authorization</h1>
   <% } else if (user?.role > 0) { %>
-     <h1>Authorized</h1>
+    <h1>Welcome, <%= user.profile.name %></h1>
+    <% if (user.profile.avatar) { %>
+      <div>
+        <img
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        />
+      </div>
+    <% } %>
   <% } else { %> 
     <h1>Please Sign In</h1>
   <% } %> 

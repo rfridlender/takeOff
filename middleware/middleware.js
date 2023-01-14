@@ -9,7 +9,17 @@ function isLoggedIn(req, res, next) {
   res.redirect('/')
 }
 
+function isEmployee(req, res, next) {
+  res.locals.user?.role >= 100 ? next() : res.redirect('/')
+}
+
+function isManager(req, res, next) {
+  res.locals.user?.role >= 200 ? next() : res.redirect('/')
+}
+
 export {
   passDataToView,
   isLoggedIn,
+  isEmployee,
+  isManager,
 }

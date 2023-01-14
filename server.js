@@ -10,8 +10,7 @@ import methodOverride from 'method-override'
 import passport from 'passport'
 
 // import custom middleware
-import { passDataToView } from './middleware/middleware.js'
-import { isLoggedIn } from './middleware/middleware.js'
+import { passDataToView, isLoggedIn, isEmployee, isManager } from './middleware/middleware.js'
 
 // connect to MongoDB with mongoose
 import './config/database.js'
@@ -69,9 +68,9 @@ app.use(passDataToView)
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/portal', isLoggedIn, portalRouter)
-app.use('/portal/takeoffs', isLoggedIn, takeoffsRouter)
-// app.use('/portal/assets', isLoggedIn, assetsRouter)
+app.use('/portal', isLoggedIn, isEmployee, portalRouter)
+app.use('/portal/takeoffs', isLoggedIn, isEmployee, takeoffsRouter)
+// app.use('/portal/assets', isLoggedIn, isManager, assetsRouter)
 
 
 // catch 404 and forward to error handler

@@ -7,7 +7,13 @@
     <div class="navbar">
       <% if (user?.role >= 100) { %> 
         <a href="/portal">Door2Door Portal</a>
+        <a href="/portal">Takeoffs</a>
+        <a href="/portal">Create Takeoff</a>
+      <% }%>
+      <% if (user?.role >= 200) { %>
+          <a href="/portal">Manage Assets</a>
       <% } %> 
+        </div>
     </div>
     <div>
       <% if (user) { %>
