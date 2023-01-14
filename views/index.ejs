@@ -1,3 +1,14 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
+
+<main>
+  <% if (user?.role === 0) { %>
+    <h1>No Authorization</h1>
+  <% } else if (user?.role > 0) { %>
+     <h1>Authorized</h1>
+  <% } else { %> 
+    <h1>Please Sign In</h1>
+  <% } %> 
+</main>
+
 <%- include('./partials/footer') %>

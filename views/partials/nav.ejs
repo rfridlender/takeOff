@@ -4,16 +4,14 @@
 </head>
 <body>
   <nav>
-    <div>
+    <div class="navbar">
       <% if (user?.role >= 100) { %> 
         <a href="/portal">Door2Door Portal</a>
       <% } %> 
     </div>
     <div>
       <% if (user) { %>
-        <a href="/auth/logout" class="right">
-          <button type="submit">Logout</button>
-        </a>
+        <a href="/auth/logout">Logout</a>
       <% } else { %>
         <div 
           id="g_id_onload"
