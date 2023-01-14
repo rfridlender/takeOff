@@ -11,6 +11,7 @@ import passport from 'passport'
 
 // import custom middleware
 import { passDataToView } from './middleware/middleware.js'
+import { isLoggedIn } from './middleware/middleware.js'
 
 // connect to MongoDB with mongoose
 import './config/database.js'
@@ -21,6 +22,7 @@ import'./config/passport.js'
 // import routes
 import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
+import { router as portalRouter } from './routes/portal.js'
 import { router as takeoffsRouter } from './routes/takeoffs.js'
 
 
@@ -67,7 +69,10 @@ app.use(passDataToView)
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/takeoffs', takeoffsRouter)
+app.use('/portal', isLoggedIn, portalRouter)
+app.use('/portal/takeoffs', isLoggedIn, takeoffsRouter)
+// app.use('/portal/assets', isLoggedIn, assetsRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

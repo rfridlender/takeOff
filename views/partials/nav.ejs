@@ -4,25 +4,32 @@
 </head>
 <body>
   <nav>
-    <% if (user) { %>
-      <a href="/auth/logout" class="right">
-        <button type="submit">Logout</button>
-      </a>
-    <% } else { %>
-      <div 
-        id="g_id_onload"
-        data-client_id="<%= googleClientID %>"
-        data-login_uri="/auth/google"
-        data-auto_prompt="false"
-      ></div>
-      <div 
-        class="g_id_signin right"
-        data-type="standard"
-        data-size="large"
-        data-theme="outline"
-        data-text="sign_in_with"
-        data-shape="rectangular"
-        data-logo_alignment="left"
-      ></div>
-    <% } %>
+    <div>
+      <% if (user?.role >= 100) { %> 
+        <a href="/portal">Door2Door Portal</a>
+      <% } %> 
+    </div>
+    <div>
+      <% if (user) { %>
+        <a href="/auth/logout" class="right">
+          <button type="submit">Logout</button>
+        </a>
+      <% } else { %>
+        <div 
+          id="g_id_onload"
+          data-client_id="<%= googleClientID %>"
+          data-login_uri="/auth/google"
+          data-auto_prompt="false"
+        ></div>
+        <div 
+          class="g_id_signin right"
+          data-type="standard"
+          data-size="large"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left"
+        ></div>
+      <% } %>
+    </div>
   </nav>
