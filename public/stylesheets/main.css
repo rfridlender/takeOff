@@ -50,10 +50,18 @@ nav a {
   text-decoration: none;
   padding: 1rem;
   color: var(--color-1);
-  background-color: var(--color-2);
+  background-color: var(--color-3);
   border-radius: 2rem 0 2rem 1rem;
 }
 
+nav a:hover {
+  background-color: var(--color-2);
+  scale: 2;
+}
+
+/* .active {
+
+} */
 /* .navbar {
 
 } */

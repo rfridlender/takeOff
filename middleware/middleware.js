@@ -5,8 +5,7 @@ function passDataToView(req, res, next) {
 }
 
 function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next()
-  res.redirect('/')
+  req.isAuthenticated() ? next() : res.redirect('/')
 }
 
 function isEmployee(req, res, next) {

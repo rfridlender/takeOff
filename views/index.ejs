@@ -4,7 +4,7 @@
 <main>
   <% if (user?.role === 0) { %>
     <h1>No Authorization</h1>
-  <% } else if (user?.role > 0) { %>
+  <% } else if (user?.role >= 100) { %>
     <h1>Welcome, <%= user.profile.name %></h1>
     <% if (user.profile.avatar) { %>
       <div>
