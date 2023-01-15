@@ -7,11 +7,11 @@
     <div class="navbar">
       <% if (user?.role >= 100) { %> 
         <a href="/portal" <%- title === 'Home' ? 'class="active"' : '' %>>Door2Door</a>
-        <a href="/portal" <%- title === 'Takeoffs' ? 'class="active"' : '' %>>Takeoffs</a>
-        <a href="/portal" <%- title === 'Create Takeoffs' ? 'class="active"' : '' %>>Create Takeoff</a>
+        <a href="/portal/takeoffs" <%- title === 'Takeoffs' ? 'class="active"' : '' %>>Takeoffs</a>
+        <a href="/portal/takeoffs/new" <%- title === 'Create Takeoffs' ? 'class="active"' : '' %>>Create Takeoff</a>
       <% }%>
       <% if (user?.role >= 200) { %>
-          <a href="/portal" <%- title === 'Assets' ? 'class="active"' : '' %>>Assets</a>
+          <a href="/portal/assets" <%- title === 'Assets' ? 'class="active"' : '' %>>Assets</a>
       <% } %> 
         </div>
     </div>

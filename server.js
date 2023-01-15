@@ -23,6 +23,7 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as portalRouter } from './routes/portal.js'
 import { router as takeoffsRouter } from './routes/takeoffs.js'
+import { router as assetsRouter} from './routes/assets.js'
 
 
 // create the express app
@@ -65,12 +66,16 @@ app.use(passport.session())
 // custom middleware
 app.use(passDataToView)
 
+// authorization gates
+app.use('/portal', isLoggedIn, isEmployee)
+app.use('/portal/assets', isLoggedIn, isManager)
+
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/portal', isLoggedIn, isEmployee, portalRouter)
-app.use('/portal/takeoffs', isLoggedIn, isEmployee, takeoffsRouter)
-// app.use('/portal/assets', isLoggedIn, isManager, assetsRouter)
+app.use('/portal', portalRouter)
+app.use('/portal/takeoffs', takeoffsRouter)
+app.use('/portal/assets', assetsRouter)
 
 
 // catch 404 and forward to error handler

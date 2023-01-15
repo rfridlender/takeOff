@@ -2,7 +2,15 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1><%= title %></h1>
+  <h1>Welcome, <%= user.profile.name %></h1>
+    <% if (user.profile.avatar) { %>
+      <div>
+        <img
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        />
+      </div>
+    <% } %>
 </main>
 
 <%- include('./partials/footer') %>

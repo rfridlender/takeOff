@@ -49,22 +49,19 @@ nav {
 nav a {
   text-decoration: none;
   padding: 1rem;
-  color: var(--color-1);
-  background-color: var(--color-3);
-  border-radius: 2rem 0 2rem 1rem;
+  color: var(--color-2);
+  border-radius: 1.5rem;
+  transition: all .5s;
 }
 
 nav a:hover {
-  background-color: var(--color-2);
-  scale: 2;
+  background-color: var(--color-3);
+  color: var(--color-1);
 }
 
-/* .active {
-
-} */
-/* .navbar {
-
-} */
+a.active {
+  color: var(--color-4);
+}
 
 main {
   margin-top: 4rem;
@@ -72,5 +69,3 @@ main {
   align-items: center;
   flex-direction: column;
 }
-
-

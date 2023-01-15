@@ -1,0 +1,20 @@
+.lock-count-input {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.lock-count-input > * {
+  margin: 0 1rem;
+}
+
+.lock-count-input input {
+  width: 10%;
+}
+
+.lock-count-input .operator {
+  flex: 1;
+  padding: .5rem 2rem;
+  background-color: #333333;
+  border-radius: 1rem;
+}

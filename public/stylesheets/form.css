@@ -1,0 +1,56 @@
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+}
+
+form > * {
+  width: 95%;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+form > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form button {
+  font-size: 1rem;
+  border: none;
+  background-color: var(--color-1);
+  color: var(--color-2);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  transition: all .5s;
+}
+
+form button:hover {
+  background-color: var(--color-3);
+  color: var(--color-1);
+  cursor: pointer;
+}
+
+form input, form select {
+  font-size: 1rem;
+  padding: .5rem;
+  border: none;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+thead {
+  background-color: var(--color-3);
+}
+
+tbody {
+  background-color: var(--color-2);
+}
+
+td, th {
+  padding: .5rem;
+  text-align: center;
+}
