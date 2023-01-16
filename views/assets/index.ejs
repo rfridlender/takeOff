@@ -1,8 +1,128 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/form.css">
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %></h1>
+  <main>
+    <h1><%= title %></h1>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">Builders</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          <tr>
+            <form action="/portal/assets/builders" method="POST">
+              <td><input type="text" name="name" required placeholder="Builder Builder"></td>
+              <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000"></td>
+              <td><input type="email" name="email" placeholder="builder@builder.com"></td>
+              <td><button type="submit"><i class="fas fa-solid fa-user-plus fa-2xl"></i></button></td>
+            </form>
+            <td></td>
+          </tr>
+
+
+
+
+
+
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="6">Locks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Handleset</th>
+            <th>Finishes</th>
+            <th>Price</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          <tr>
+            <form action="/portal/assets/locks" method="POST">
+              <td><input type="text" name="name" required placeholder="Brand Style"></td>
+              <td><input type="text" name="handlesetName" required placeholder="Brand Style"></td>
+              <td>
+                <div class="finish-input-row">
+                  <div class="finish-input">
+                    <label for="US3">US3:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US3" value="US3">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US5">US5:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US5" value="US5">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US10B">US10B:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US10B" value="US10B">
+                  </div>
+                </div>
+                <div class="finish-input-row">
+                  <div class="finish-input">
+                    <label for="US11P">US11P:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US11P" value="US11P">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US15">US15:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US15" value="US15">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US15A">US15A:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US15A" value="US15A">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US19">US19:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US19" value="US19">
+                  </div>
+                </div>
+                <div class="finish-input-row">
+                  <div class="finish-input">
+                    <label for="US26">US26:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US26" value="US26">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US26D">US26D:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US26D" value="US26D">
+                  </div>
+                  <div class="finish-input">
+                    <label for="US32D">US32D:</label>
+                    <input type="checkbox" name="possibleFinishes" id="US32D" value="US32D">
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input type="number" name="price" min="0" step="0.01" required>
+              </td>
+              <td><button type="submit"><i class="fas fa-solid fa-plus fa-2xl"></i></button></td>
+            </form>
+            <td></td>
+          </tr>
+
+
+
+
+
+
+        </tbody>
+      </table>
+      <div>
+        <button type="submit">Create</button>
+        <a href="/portal/takeoffs"><button>Cancel</button></a>
+      </div>
+  </main>
 </main>
 
 <%- include('../partials/footer') %>

@@ -1,6 +1,7 @@
 import { Lock } from '../models/lock.js'
 
 function create(req, res) {
+  console.log(req.body);
   Lock.create(req.body)
   .then(() => {
     res.redirect('/portal/assets')
