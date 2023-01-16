@@ -10,9 +10,13 @@ router.get('/', assetsCtrl.index)
 
 // Builder Controllers
 router.post('/builders', buildersCtrl.create)
+router.put('/builders/:id', buildersCtrl.update)
+router.delete('/builders/:id', buildersCtrl.delete)
 
 // Lock Controllers
 router.post('/locks', locksCtrl.create)
+router.put('/locks/:id', locksCtrl.update)
+router.delete('/locks/:id', locksCtrl.delete)
 
 export {
   router

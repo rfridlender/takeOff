@@ -1,0 +1,57 @@
+main > div {
+  width: 95%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+div table {
+  width: 100%;
+}
+
+.finish-input-table {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finish-input-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  margin: 0;
+  gap: .25rem;
+}
+
+.finish-input {
+  margin: .25rem;
+  width: 100%;
+}
+
+.finish-input input[type=checkbox] {
+  display: none;
+}
+
+.finish-input label {
+  background-color: var(--color-1);
+  color: var(--color-2);
+  padding: .25rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.finish-input label:hover {
+  background-color: var(--color-3);
+  color: var(--color-1);
+}
+
+input[type=checkbox]:checked + label {
+  background-color: var(--color-3);
+  color: var(--color-1);
+}

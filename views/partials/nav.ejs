@@ -5,15 +5,18 @@
 <body>
   <nav>
     <div class="navbar">
-      <% if (user?.role >= 100) { %> 
-        <a href="/portal" <%- title === 'Home' ? 'class="active"' : '' %>>Door2Door</a>
+      <% if (user?.role >= 100) { %>
+        <div class="logo">
+          <a href="/portal" <%- title === 'Home' ? 'class="active"' : '' %>>
+            <img src="/assets/Door2Door-Logo.png" alt="Door2Door Logo">
+          </a>
+        </div>
         <a href="/portal/takeoffs" <%- title === 'Takeoffs' ? 'class="active"' : '' %>>Takeoffs</a>
         <a href="/portal/takeoffs/new" <%- title === 'Create Takeoffs' ? 'class="active"' : '' %>>Create Takeoff</a>
       <% }%>
       <% if (user?.role >= 200) { %>
-          <a href="/portal/assets" <%- title === 'Assets' ? 'class="active"' : '' %>>Assets</a>
+        <a href="/portal/assets" <%- title === 'Assets' ? 'class="active"' : '' %>>Assets</a>
       <% } %> 
-        </div>
     </div>
     <div>
       <% if (user) { %>

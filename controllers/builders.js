@@ -11,6 +11,30 @@ function create(req, res) {
   })
 }
 
+function update(req, res) {
+  Builder.findByIdAndUpdate(req.params.id, req.body)
+  .then(() => {
+    res.redirect('/portal/assets')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/assets')
+  })
+}
+
+function deleteBuilder(req, res) {
+  Builder.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect('/portal/assets')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/assets')
+  })
+}
+
 export {
-  create
+  create,
+  update,
+  deleteBuilder as delete,
 }

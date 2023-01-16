@@ -27,9 +27,10 @@
           <td>
             <label for="builder-input">Builder:</label>
             <select name="builder" id="builder-input" required>
-
-              <!-- import available builders here -->
-
+              <option>-- Select a Builder --</option>
+              <% builders.forEach(builder => { %>
+                <option value="<%= builder._id %>"><%= builder.name %></option>
+              <% }) %>
             </select>
           </td>
           <td>
@@ -50,17 +51,19 @@
           <td>
             <label for="lock-input">Style:</label>
             <select name="lock" id="lock-input" required>
-
-              <!-- import lock options here -->
-
+              <option>-- Select a Lock --</option>
+              <% locks.forEach(lock => { %>
+                <option value="<%= lock._id %>"><%= lock.name %></option>
+              <% }) %>
             </select>
           </td>
           <td>
             <label for="lock-finish-input">Finish:</label>
             <select name="lockFinish" id="lock-finish-input" required>
-
-              <!-- import available lock finishes here -->
-
+                <!-- <option>-- Select a Finish --</option>
+                <% locks.forEach(lock => { %>
+                  <option value="<%= lock._id %>"><%= lock.name %></option>
+                <% }) %> -->
             </select>
           </td>
           <td>
