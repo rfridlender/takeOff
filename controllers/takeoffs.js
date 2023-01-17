@@ -59,9 +59,27 @@ function create(req, res) {
 function edit(req, res) {
   Takeoff.findById(req.params.id)
   .then(takeoff => {
-    res.render('takeoffs/edit', {
-      title: `Takeoff for ${takeoff.address}`,
-      takeoff
+    Builder.find({})
+    .then(builders => {
+      Lock.find({})
+      .then(locks => {
+        res.render('takeoffs/new', {
+          title: `Takeoff for ${takeoff.address}`,
+          takeoff,
+          builders,
+          locks,
+          possibleFinishes: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D'],
+          possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/portal/takeoffs')
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/portal/takeoffs')
     })
   })
   .catch(err => {
