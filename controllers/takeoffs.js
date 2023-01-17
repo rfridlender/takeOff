@@ -7,7 +7,61 @@ function index(req, res) {
   .populate('createdBy')
   .populate('builder')
   .then(takeoffs => {
-    console.log(takeoffs);
+      takeoffs.sort((a, b) => {
+        return a.jobStatus - b.jobStatus
+      })
+    if (req.query.status) {
+      if (req.query.status === 'ascending') {
+        takeoffs.sort((a, b) => {
+          return a.jobStatus - b.jobStatus
+        })
+      }
+      if (req.query.status === 'descending') {
+        takeoffs.sort((a, b) => {
+          return b.jobStatus - a.jobStatus
+        })
+      }
+    }
+    if (req.query.address) {
+      if (req.query.address) {
+        if (req.query.address === 'ascending') {
+          takeoffs.sort((a, b) => {
+            return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? -1 : 1
+          })
+        }
+        if (req.query.address === 'descending') {
+          takeoffs.sort((a, b) => {
+            return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? 1 : -1
+          })
+        }
+      }
+    }
+    if (req.query.builder) {
+      if (req.query.builder === 'ascending') {
+        takeoffs.sort((a, b) => {
+          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? -1 : 1
+        })
+      }
+      if (req.query.builder === 'descending') {
+        takeoffs.sort((a, b) => {
+          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? 1 : -1
+        })
+      }
+    }
+    ['Address', 'Deadline', 'Created By'].forEach(filter => {
+      if (req.query[filter.toLowerCase()]) {
+        if (req.query[filter.toLowerCase()] === 'ascending') {
+          takeoffs.sort((a, b) => {
+            return a[filter.toLowerCase()] - b[filter.toLowerCase()]
+          })
+        }
+        if (req.query[filter.toLowerCase()] === 'descending') {
+          takeoffs.sort((a, b) => {
+            return b[filter.toLowerCase()] - a[filter.toLowerCase()]
+          })
+        }
+      }
+    })
     res.render('takeoffs/index', {
       title: 'Takeoffs',
       takeoffs,

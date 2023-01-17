@@ -94,9 +94,9 @@
             </td>
             <td colspan="2">
               <div class="lock-count-input">
-                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-2xl"></i></div>
+                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
                 <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" min="0" required value="<%= takeoff.lockCount[idx] %>">
-                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-2xl"></i></div>
+                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
               </div>
             </td>
           </tr>
