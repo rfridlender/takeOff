@@ -44,6 +44,23 @@ function newTakeoff(req, res) {
   })
 }
 
+function show(req, res) {
+  Takeoff.findById(req.params.id)
+  .populate('builder')
+  .populate('lock')
+  .then(takeoff => {
+    res.render('takeoffs/show', {
+      title: `Takeoff for ${takeoff.address}`,
+      takeoff,
+      possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
+      })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/takeoffs')
+  })
+}
+
 function create(req, res) {
   req.body.createdBy = req.user.profile._id
   Takeoff.create(req.body)
@@ -116,6 +133,7 @@ function deleteTakeoff(req, res) {
 export {
   index,
   newTakeoff as new,
+  show,
   create,
   edit,
   update,

@@ -22,20 +22,28 @@
     </form>
     <table>
       <thead>
-        <th>Address</th>
-        <th>Deadline</th>
-        <th>Builder</th>
-        <th>Created By</th>
-        <th>Update</th>
+          <th>Address</th>
+          <th>Deadline</th>
+          <th>Builder</th>
+          <th>Created By</th>
+        <% if (user.role < 200) { %>
+          <th>Details</th>
+        <% } else { %>
+          <th>Update</th>
+        <% } %>
       </thead>
       <tbody>
         <% takeoffs.forEach(takeoff => { %>
           <tr class="job-status-<%= takeoff.jobStatus %>">
-            <td><%= takeoff.address %></td>
-            <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
-            <td><%= takeoff.builder.name %></td>
-            <td><%= takeoff.createdBy.name %></td>
-            <td><a href="/portal/takeoffs/<%= takeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+              <td><%= takeoff.address %></td>
+              <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
+              <td><%= takeoff.builder.name %></td>
+              <td><%= takeoff.createdBy.name %></td>
+            <% if (user.role < 200) { %>
+              <td><a href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-eye fa-2xl"></i></i></a></td>
+            <% } else { %>
+              <td><a href="/portal/takeoffs/<%= takeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+            <% } %>
           </tr>
         <% }) %>
       </tbody>

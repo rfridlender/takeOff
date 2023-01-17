@@ -115,3 +115,7 @@ button {
 a {
   color: var(--color-4);
 }
+
+i {
+  color: var(--color-1);
+}

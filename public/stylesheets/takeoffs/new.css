@@ -31,3 +31,7 @@
   color: var(--color-1);
   width: 16rem;
 }
+
+.return-button-container {
+  justify-content: flex-end;
+}

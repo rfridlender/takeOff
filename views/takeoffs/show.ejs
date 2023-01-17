@@ -1,0 +1,120 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/takeoffs/new.css">
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Job Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="date-input-container">
+            <div class="date-input">
+              <label>Date:</label>
+              <label><%= takeoff.createdAt.toString().substring(0,16) %></label>
+            </div>
+            <div class="deadline-input">
+              <label>Deadline:</label>
+              <label><%= takeoff.deadline.toISOString().substring(0, 10) %></label>
+            </div>
+          </td>
+          <td>
+            <label>Address:</label>
+            <label><%= takeoff.address %></label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Builder:</label>
+            <label><%= takeoff.builder.name %></label>
+          </td>
+          <td>
+            <label>Lockbox Code:</label>
+            <label><%= takeoff.lockboxCode %></label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3">Locks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <label>Style:</label>
+            <label><%= takeoff.lock.name %></label>
+          </td>
+          <td>
+            <label>Finish:</label>
+            <label><%= takeoff.lockFinish %></label>
+          </td>
+          <td>
+            <label>Key Number:</label>
+            <label><%= takeoff.keyNumber %></label>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label>Type</label>
+          </th>
+          <th colspan="2">
+            <label>Count</label>
+          </th>
+        </tr>
+        <% possibleLockTypes.forEach((possibleLockType, idx) => { %>
+          <tr>
+            <td>
+              <label for="<%= possibleLockType.toLowerCase() %>-input"><%= possibleLockType %></label>
+            </td>
+            <td colspan="2">
+              <div class="lock-count-input">
+                <label><%= takeoff.lockCount[idx] %></label>       
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Job Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <label>Status:</label>
+            <label><%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%></label>
+          </td>
+          <td>
+            <label>Installers:</label>
+
+            
+            <!-- <input  -->
+            <!-- type="text"  -->
+            <!-- id="installers-input"  -->
+            <!-- name="installers"  -->
+            <%# installers ? `value="${takeoff.installers}"` : 'placeholder="Installer Installer"'%>
+            <!-- > -->
+ 
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div  class="return-button-container">
+      <a href="/portal/takeoffs"><button type="button">Return</button></a>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
