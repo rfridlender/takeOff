@@ -1,3 +1,9 @@
+.date-input-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .lock-count-input {
   display: flex;
   justify-content: space-evenly;

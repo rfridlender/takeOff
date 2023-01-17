@@ -6,6 +6,8 @@ const router = Router()
 router.get('/', takeoffsCtrl.index)
 router.get('/new', takeoffsCtrl.new)
 
+router.post('/', takeoffsCtrl.create)
+
 export {
   router
 }

@@ -14,13 +14,19 @@
       </thead>
       <tbody>
         <tr>
-          <td>
-            <label>Date:</label>
-            <label><%= new Date().toString().substring(0,16) %></label>
+          <td class="date-input-container">
+            <div class="date-input">
+              <label>Date:</label>
+              <label><%= new Date().toString().substring(0,16) %></label>
+            </div>
+            <div class="deadline-input">
+              <label for="deadline-input">Deadline:</label>
+              <input type="date" name="deadline" id="deadline-input">
+            </div>
           </td>
           <td>
             <label for="address-input">Address:</label>
-            <input type="text" id="address-input "name="address" placeholder="000 Address Street, City, ST 00000" required>
+            <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required>
           </td>
         </tr>
         <tr>
@@ -35,7 +41,7 @@
           </td>
           <td>
             <label for="lockbox-code-input">Lockbox Code:</label>
-            <input type="text" id="lockbox-code-input "name="address" placeholder="0000">
+            <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000">
           </td>
         </tr>
       </tbody>
@@ -68,7 +74,7 @@
           </td>
           <td>
             <label for="key-number-input">Key Number:</label>
-            <input type="text" id="key-number-input "name="address" placeholder="00000">
+            <input type="text" id="key-number-input" name="keyNumber" placeholder="00000">
           </td>
         </tr>
         <tr>

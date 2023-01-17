@@ -40,7 +40,13 @@ function newTakeoff(req, res) {
   })
 }
 
+function create(req, res) {
+  req.body.createdBy = res.locals.user._id
+  console.log(req.body);
+}
+
 export {
   index,
-  newTakeoff as new
+  newTakeoff as new,
+  create
 }
