@@ -7,9 +7,14 @@ function index(req, res) {
   .populate('createdBy')
   .populate('builder')
   .then(takeoffs => {
-      takeoffs.sort((a, b) => {
-        return a.jobStatus - b.jobStatus
+    takeoffs.sort((a, b) => {
+      return a.jobStatus - b.jobStatus
+    })
+    if (req.query.search) {
+      takeoffs.filter(takeoff => {
+        return takeoff.address.toLowerCase().includes(req.query.search.toLowerCase()) ? true : false
       })
+    }
     if (req.query.status) {
       if (req.query.status === 'ascending') {
         takeoffs.sort((a, b) => {
@@ -48,20 +53,30 @@ function index(req, res) {
         })
       }
     }
-    ['Address', 'Deadline', 'Created By'].forEach(filter => {
-      if (req.query[filter.toLowerCase()]) {
-        if (req.query[filter.toLowerCase()] === 'ascending') {
-          takeoffs.sort((a, b) => {
-            return a[filter.toLowerCase()] - b[filter.toLowerCase()]
-          })
-        }
-        if (req.query[filter.toLowerCase()] === 'descending') {
-          takeoffs.sort((a, b) => {
-            return b[filter.toLowerCase()] - a[filter.toLowerCase()]
-          })
-        }
+    if (req.query.deadline) {
+      if (req.query.deadline === 'ascending') {
+        takeoffs.sort((a, b) => {
+          return a.deadline - b.deadline
+        })
       }
-    })
+      if (req.query.deadline === 'descending') {
+        takeoffs.sort((a, b) => {
+          return b.deadline - a.deadline
+        })
+      }
+    }
+    if (req.query['created by']) {
+      if (req.query['created by'] === 'ascending') {
+        takeoffs.sort((a, b) => {
+          return a.createdBy.name.toLowerCase() < b.createdBy.name.toLowerCase() ? -1 : 1
+        })
+      }
+      if (req.query['created by'] === 'descending') {
+        takeoffs.sort((a, b) => {
+          return a.createdBy.name.toLowerCase() < b.createdBy.name.toLowerCase() ? 1 : -1
+        })
+      }
+    }
     res.render('takeoffs/index', {
       title: 'Takeoffs',
       takeoffs,
@@ -118,7 +133,7 @@ function show(req, res) {
 function create(req, res) {
   req.body.createdBy = req.user.profile._id
   Takeoff.create(req.body)
-  .then(takeoff => {
+  .then(() => {
     res.redirect('/portal/takeoffs')
   })
   .catch(err => {

@@ -8,6 +8,7 @@
   <div>
     <form action="/portal/takeoffs" method="GET">
       <div class="filter-nav">
+          <input type="search" name="search">
         <% filters.forEach(filter => { %>
           <div class="filter">
             <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
