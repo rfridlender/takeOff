@@ -4,10 +4,14 @@ import { Lock } from '../models/lock.js'
 
 function index(req, res) {
   Takeoff.find({})
+  .populate('createdBy')
+  .populate('builder')
   .then(takeoffs => {
+    console.log(takeoffs);
     res.render('takeoffs/index', {
       title: 'Takeoffs',
-      takeoffs
+      takeoffs,
+      filters: ['Status', 'Address', 'Deadline', 'Builder', 'Created By']
     })
   })
   .catch(err => {
@@ -41,9 +45,9 @@ function newTakeoff(req, res) {
 }
 
 function create(req, res) {
-  req.body.createdBy = res.locals.user._id
+  req.body.createdBy = req.user.profile._id
   Takeoff.create(req.body)
-  .then(() => {
+  .then(takeoff => {
     res.redirect('/portal/takeoffs')
   })
   .catch(err => {

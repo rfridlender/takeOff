@@ -1,10 +1,43 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/takeoffs/index.css">
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
+  <form action="/portal/takeoffs" method="GET">
+    <div class="filter-nav">
+      <% filters.forEach(filter => { %>
+        <div class="filter">
+          <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
+          <label for="<%= filter.toLowerCase() %>-descending">-</label>
+          <label><%= filter %></label>
+          <label for="<%= filter.toLowerCase() %>-ascending">+</label>
+          <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
+        </div>
+      <% }) %>   
+          <button class="filter" type="submit">Filter</button>
+    </div>
+  </form>
   <table>
-    
+    <thead>
+      <th>Address</th>
+      <th>Deadline</th>
+      <th>Builder</th>
+      <th>Created By</th>
+      <th>Update</th>
+    </thead>
+    <tbody>
+      <% takeoffs.forEach(takeoff => { %>
+        <tr class="job-status-<%= takeoff.jobStatus %>">
+          <td><%= takeoff.address %></td>
+          <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
+          <td><%= takeoff.builder.name %></td>
+          <td><%= takeoff.createdBy.name %></td>
+          <td><a href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+        </tr>
+      <% }) %>
+    </tbody>
   </table>
 </main>
 
