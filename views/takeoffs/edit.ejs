@@ -112,14 +112,14 @@
           <td>
             <label for="job-status-input">Status:</label>
             <select name="jobStatus" id="job-status-input">
-                <option value="<%= takeoff.jobStatus %>">
-                  <%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%>
-                </option>
-              <% remainingStatuses.forEach(remainingStatus => { %>
-                <option value="<%= remainingStatus %>">
-                  <%= remainingStatus === 0 ? 'Not Started' : remainingStatus === 1 ? 'In Progress' : 'Completed'%>
-                </option>
-              <% }) %>
+                  <option value="<%= takeoff.jobStatus %>">
+                    <%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%>
+                  </option>
+                <% remainingStatuses().forEach(remainingStatus => { %>
+                  <option value="<%= remainingStatus %>">
+                    <%= remainingStatus === 0 ? 'Not Started' : remainingStatus === 1 ? 'In Progress' : 'Completed'%>
+                  </option>
+                <% }) %>
             </select>
           </td>
           <td>

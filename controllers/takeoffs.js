@@ -72,17 +72,13 @@ function edit(req, res) {
           locks,
           possibleFinishes: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D'],
           possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
-          remainingStatuses: [0, 1, 2].filter(status => {
-            if (status !== takeoff.jobStatus) {
-              return status
-            }
-          }),
+          remainingStatuses: () => {return [0, 1, 2].filter(status => {return status !== takeoff.jobStatus ? true : false})},
+          })
         })
-      })
-      .catch(err => {
-        console.log(err)
-        res.redirect('/portal/takeoffs')
-      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/portal/takeoffs')
     })
     .catch(err => {
       console.log(err)
