@@ -77,7 +77,7 @@ nav a {
   text-decoration: none;
   padding: 1rem;
   color: var(--color-2);
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   transition: all .5s;
 }
 
@@ -109,4 +109,8 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+a {
+  color: var(--color-4);
 }

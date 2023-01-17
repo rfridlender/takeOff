@@ -5,40 +5,42 @@
 
 <main>
   <h1><%= title %></h1>
-  <form action="/portal/takeoffs" method="GET">
-    <div class="filter-nav">
-      <% filters.forEach(filter => { %>
-        <div class="filter">
-          <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
-          <label for="<%= filter.toLowerCase() %>-descending">-</label>
-          <label><%= filter %></label>
-          <label for="<%= filter.toLowerCase() %>-ascending">+</label>
-          <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
-        </div>
-      <% }) %>   
-          <button class="filter" type="submit">Filter</button>
-    </div>
-  </form>
-  <table>
-    <thead>
-      <th>Address</th>
-      <th>Deadline</th>
-      <th>Builder</th>
-      <th>Created By</th>
-      <th>Update</th>
-    </thead>
-    <tbody>
-      <% takeoffs.forEach(takeoff => { %>
-        <tr class="job-status-<%= takeoff.jobStatus %>">
-          <td><%= takeoff.address %></td>
-          <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
-          <td><%= takeoff.builder.name %></td>
-          <td><%= takeoff.createdBy.name %></td>
-          <td><a href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></a></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
+  <div>
+    <form action="/portal/takeoffs" method="GET">
+      <div class="filter-nav">
+        <% filters.forEach(filter => { %>
+          <div class="filter">
+            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
+            <label class="arrow" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
+            <label><%= filter %></label>
+            <label class="arrow" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
+            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
+          </div>
+        <% }) %>   
+            <button class="filter" type="submit"><i class="fas fa-solid fa-filter"></i></button>
+      </div>
+    </form>
+    <table>
+      <thead>
+        <th>Address</th>
+        <th>Deadline</th>
+        <th>Builder</th>
+        <th>Created By</th>
+        <th>Update</th>
+      </thead>
+      <tbody>
+        <% takeoffs.forEach(takeoff => { %>
+          <tr class="job-status-<%= takeoff.jobStatus %>">
+            <td><%= takeoff.address %></td>
+            <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
+            <td><%= takeoff.builder.name %></td>
+            <td><%= takeoff.createdBy.name %></td>
+            <td><a href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>
