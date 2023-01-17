@@ -58,18 +58,25 @@ function create(req, res) {
 
 function edit(req, res) {
   Takeoff.findById(req.params.id)
+  .populate('builder')
+  .populate('lock')
   .then(takeoff => {
-    Builder.find({})
+    Builder.find({_id: {$nin: takeoff.builder}})
     .then(builders => {
-      Lock.find({})
+      Lock.find({_id: {$nin: takeoff.lock}})
       .then(locks => {
-        res.render('takeoffs/new', {
+        res.render('takeoffs/edit', {
           title: `Takeoff for ${takeoff.address}`,
           takeoff,
           builders,
           locks,
           possibleFinishes: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D'],
           possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
+          remainingStatuses: [0, 1, 2].filter(status => {
+            if (status !== takeoff.jobStatus) {
+              return status
+            }
+          }),
         })
       })
       .catch(err => {

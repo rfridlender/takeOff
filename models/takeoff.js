@@ -19,6 +19,7 @@ const takeoffSchema = new Schema({
   keyNumber: {type: String, length: 5,},
   // notes: {type: [Schema.Types.ObjectId, ref:'Note']},
   jobStatus: {type: Number, required: true, default: 0, enum: [0, 1, 2]},
+  // installers: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
   deadline: {type: Date, min: new Date()}
 }, {
   timestamps: true,
