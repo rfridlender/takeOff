@@ -52,18 +52,18 @@
             <label for="lock-input">Style:</label>
             <select name="lock" id="lock-input" required>
               <option>-- Select a Lock --</option>
-              <% locks.forEach(lock => { %>
-                <option value="<%= lock._id %>"><%= lock.name %></option>
-              <% }) %>
+                <% locks.forEach(lock => { %>
+                  <option value="<%= lock._id %>"><%= lock.name %></option>
+                <% }) %>
             </select>
           </td>
           <td>
             <label for="lock-finish-input">Finish:</label>
             <select name="lockFinish" id="lock-finish-input" required>
-                <!-- <option>-- Select a Finish --</option>
-                <% locks.forEach(lock => { %>
-                  <option value="<%= lock._id %>"><%= lock.name %></option>
-                <% }) %> -->
+                <option>-- Select a Finish --</option>
+                <% possibleFinishes.forEach(possibleFinish => { %>
+                  <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
+                <% }) %>
             </select>
           </td>
           <td>
@@ -79,150 +79,20 @@
             <label>Count</label>
           </th>
         </tr>
-        <tr>
-          <td>
-            <label for="handleset-input">Handleset</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('handleset-input').value--">-</div>
-              <input id="handleset-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('handleset-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="interior-trim-input">Interior Trim</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('interior-trim-input').value--">-</div>
-              <input id="interior-trim-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('interior-trim-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="entry-input">Entry</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('entry-input').value--">-</div>
-              <input id="entry-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('entry-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="deadbolt-input">Deadbolt</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('deadbolt-input').value--">-</div>
-              <input id="deadbolt-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('deadbolt-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="passage-input">Passage</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('passage-input').value--">-</div>
-              <input id="passage-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('passage-input').value++">+</div>
-            </div>
+        <% possibleLockTypes.forEach(possibleLockType => { %>
+          <tr>
+            <td>
+              <label for="<%= possibleLockType.toLowerCase() %>-input"><%= possibleLockType %></label>
             </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="privacy-input">Privacy</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('privacy-input').value--">-</div>
-              <input id="privacy-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('privacy-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="dummy-input">Dummy</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('dummy-input').value--">-</div>
-              <input id="dummy-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('dummy-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="pocket-passage-input">Pocket Passage</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('pocket-passage-input').value--">-</div>
-              <input id="pocket-passage-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('pocket-passage-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="pocket-privacy-input">Pocket Privacy</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('pocket-privacy-input').value--">-</div>
-              <input id="pocket-privacy-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('pocket-privacy-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="jumbo-springs-input">Jumbo Springs</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('jumbo-springs-input').value--">-</div>
-              <input id="jumbo-springs-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('jumbo-springs-input').value++">+</div>
-            </div>
-          </td>
-        </tr
-        <tr>
-          <td>
-            <label for="door-saver-input">Door Saver</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('door-saver-input').value--">-</div>
-              <input id="door-saver-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('door-saver-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="door-saver-ii-input">Door Saver II</label>
-          </td>
-          <td colspan="2">
-            <div class="lock-count-input">
-              <div class="operator" onclick="document.getElementById('door-saver-ii-input').value--">-</div>
-              <input id="door-saver-ii-input" name="lockCount" type="number" value="0" min="0" required>
-              <div class="operator" onclick="document.getElementById('door-saver-ii-input').value++">+</div>
-            </div>
-          </td>
-        </tr>
+            <td colspan="2">
+              <div class="lock-count-input">
+                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--">-</div>
+                <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" value="0" min="0" required>
+                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++">+</div>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
       </tbody>
     </table>
     <div>
