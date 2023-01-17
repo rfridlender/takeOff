@@ -95,9 +95,21 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Takeoff.findByIdAndUpdate(req.params.id, req.body)
+  .then(() => {
+    res.redirect('/portal/takeoffs')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/takeoffs')
+  })
+}
+
 export {
   index,
   newTakeoff as new,
   create,
   edit,
+  update
 }

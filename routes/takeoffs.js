@@ -8,6 +8,7 @@ router.get('/new', takeoffsCtrl.new)
 router.get('/:id/edit', takeoffsCtrl.edit)
 
 router.post('/', takeoffsCtrl.create)
+router.put('/:id', takeoffsCtrl.update)
 
 export {
   router
