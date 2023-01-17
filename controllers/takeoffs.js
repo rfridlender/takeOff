@@ -56,8 +56,23 @@ function create(req, res) {
   })
 }
 
+function edit(req, res) {
+  Takeoff.findById(req.params.id)
+  .then(takeoff => {
+    res.render('takeoffs/edit', {
+      title: `Takeoff for ${takeoff.address}`,
+      takeoff
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/takeoffs')
+  })
+}
+
 export {
   index,
   newTakeoff as new,
-  create
+  create,
+  edit,
 }
