@@ -17,14 +17,32 @@ td {
 
 .filter-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
-  gap: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input {
+  border-radius: 2rem 0 0 2rem;
+  outline: 0;
+  border-right: 2px solid var(--color-4);
+  color: var(--color-3);
+}
+
+.search-bar button {
+  background-color: var(--color-3);
+  padding: .5rem;
+  border-radius: 0 2rem 2rem 0;
 }
 
 .filter {
   background-color: var(--color-1);
-  color: var(--color-2);
+  color: var(--color-3);
   padding: .5rem .25rem;
   border-radius: 2rem;
 }
@@ -34,7 +52,7 @@ button.filter {
 }
 
 .arrow {
-  background-color: var(--color-2);
+  background-color: var(--color-3);
   color: var(--color-1);
   padding: .25rem .5rem;
   border-radius: 2rem;

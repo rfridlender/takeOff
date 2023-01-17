@@ -11,7 +11,7 @@ function index(req, res) {
       return a.jobStatus - b.jobStatus
     })
     if (req.query.search) {
-      takeoffs.filter(takeoff => {
+      takeoffs = takeoffs.filter(takeoff => {
         return takeoff.address.toLowerCase().includes(req.query.search.toLowerCase()) ? true : false
       })
     }
