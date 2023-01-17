@@ -42,7 +42,14 @@ function newTakeoff(req, res) {
 
 function create(req, res) {
   req.body.createdBy = res.locals.user._id
-  console.log(req.body);
+  Takeoff.create(req.body)
+  .then(() => {
+    res.redirect('/portal/takeoffs')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/takeoffs')
+  })
 }
 
 export {
