@@ -10,6 +10,8 @@ router.get('/:id/edit', takeoffsCtrl.edit)
 router.post('/', takeoffsCtrl.create)
 router.put('/:id', takeoffsCtrl.update)
 
+router.delete('/:id', takeoffsCtrl.delete)
+
 export {
   router
 }

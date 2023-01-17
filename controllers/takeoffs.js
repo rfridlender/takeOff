@@ -102,10 +102,22 @@ function update(req, res) {
   })
 }
 
+function deleteTakeoff(req, res) {
+  Takeoff.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect('/portal/takeoffs')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/portal/takeoffs')
+  })
+}
+
 export {
   index,
   newTakeoff as new,
   create,
   edit,
-  update
+  update,
+  deleteTakeoff as delete,
 }

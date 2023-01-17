@@ -24,3 +24,10 @@
   background-color: #333333;
   border-radius: 2rem;
 }
+
+.delete-takeoff-button {
+  padding: 1rem 4rem;
+  background-color: var(--color-red);
+  color: var(--color-1);
+  width: 16rem;
+}
