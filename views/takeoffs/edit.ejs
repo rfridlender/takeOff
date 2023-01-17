@@ -68,7 +68,9 @@
             <select name="lockFinish" id="lock-finish-input" required>
               <option value="<%= takeoff.lockFinish %>"><%= takeoff.lockFinish %></option>
                 <% possibleFinishes.forEach(possibleFinish => { %>
-                  <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
+                  <% if (possibleFinish !== takeoff.lockFinish) { %>
+                    <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
+                  <% } %>
                 <% }) %>
             </select>
           </td>
