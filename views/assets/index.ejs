@@ -60,55 +60,109 @@
       <tr>
         <form action="/portal/assets/locks" method="POST">
           <td><input type="text" name="name" required placeholder="Brand Style"></td>
-          <td class="finish-input-table">
-            <div class="finish-input-row">
-              <% for( let i = 0; i < 5; i++ ) { %>
-                <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
-                  <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
-                </div>
-              <% } %>
-            </div>
-            <div class="finish-input-row">
-              <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
-                <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
-                  <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
-                </div>
-              <% } %>
-            </div>
+          <td>
+            <table>
+              <tbody>
+                <tr class="finish-input-table">
+                  <td class="finish-input-row">
+                    <% for( let i = 0; i < 5; i++ ) { %>
+                      <div class="finish-input">
+                        <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
+                        <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
+                      </div>
+                    <% } %>
+                  </td>
+                  <td class="finish-input-row">
+                    <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
+                      <div class="finish-input">
+                        <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
+                        <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
+                      </div>
+                    <% } %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </td>
           <td>
-            <input type="number" name="price" min="0" step="0.01" required>
+            <table>
+              <tbody>
+                <tr class="lock-type-input-table">
+                  <td class="lock-type-input-row">
+                    <% for( let i = 0; i < 6; i++ ) { %>
+                      <div class="lock-type-input">
+                        <label for="<%= possibleLockTypes[i] %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
+                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required>
+                      </div>
+                    <% } %>
+                  </td>
+                  <td class="lock-type-input-row">
+                    <% for( let i = 6; i < possibleLockTypes.length; i++ ) { %>
+                      <div class="lock-type-input">
+                        <label for="<%= possibleLockTypes[i] %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
+                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required>
+                      </div>
+                    <% } %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </td>
           <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-plus fa-2xl"></i></button></td>
+          <td></td>
         </form>
-        <td></td>
       </tr>
       <% locks.forEach(lock => { %>
         <tr>
           <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
             <td><input type="text" name="name" required value="<%= lock.name %>"></td>
-            <td class="finish-input-table">
-              <div class="finish-input-row">
-                <% for( let i = 0; i < 5; i++ ) { %>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
-                    <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
-                  </div>
-                <% } %>
-              </div>
-              <div class="finish-input-row">
-                <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
-                    <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
-                  </div>
-                <% } %>
-              </div>
+            <td>
+              <table>
+                <tbody>
+                  <tr class="finish-input-table">
+                    <td class="finish-input-row">
+                      <% for( let i = 0; i < 5; i++ ) { %>
+                        <div class="finish-input">
+                          <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
+                          <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
+                        </div>
+                      <% } %>
+                    </td>
+                    <td class="finish-input-row">
+                      <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
+                        <div class="finish-input">
+                          <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
+                          <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
+                        </div>
+                      <% } %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
             <td>
-              <input type="number" name="price" min="0" step="0.01" required value="<%= lock.price %>" size="4">
+              <table>
+                <tbody>
+                  <tr class="lock-type-input-table">
+                    <td class="lock-type-input-row">
+                      <% for( let i = 0; i < 6; i++ ) { %>
+                        <div class="lock-type-input">
+                          <label for="<%= possibleLockTypes[i] %><%= lock._id %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
+                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>">
+                        </div>
+                      <% } %>
+                    </td>
+                    <td class="lock-type-input-row">
+                      <% for( let i = 6; i < possibleLockTypes.length; i++ ) { %>
+                        <div class="lock-type-input">
+                          <label for="<%= possibleLockTypes[i] %><%= lock._id %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
+                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>">
+                        </div>
+                      <% } %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
             <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></button></td>
           </form>
@@ -116,6 +170,10 @@
             <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
           </form>
         </tr>
+
+
+
+
       <% }) %>
     </tbody>
   </table>
