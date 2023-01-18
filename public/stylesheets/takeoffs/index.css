@@ -82,6 +82,10 @@ button.filter, a.filter {
   display: none;
 }
 
+.filter-nav button.active {
+  background-color: var(--color-primary);
+}
+
 .job-status-0 {
   background-color: var(--color-red);
 }

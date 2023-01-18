@@ -80,7 +80,8 @@ function index(req, res) {
     res.render('takeoffs/index', {
       title: 'Takeoffs',
       takeoffs,
-      filters: ['Status', 'Address', 'Deadline', 'Builder', 'Created By']
+      filters: ['Status', 'Address', 'Deadline', 'Builder', 'Created By'],
+      query: req.query
     })
   })
   .catch(err => {

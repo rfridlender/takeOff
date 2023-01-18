@@ -10,18 +10,18 @@
       <div class="filter-nav">
           <div class="search-bar">
             <input type="search" name="search" placeholder="Search by Address">
-            <button class="hover-dark" type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
+            <button class="hover-dark <%= query.search !== undefined ? 'active' : '' %>" type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
           </div>
         <% filters.forEach(filter => { %>
           <div class="filter">
-            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
+            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending" <%- query[filter.toLowerCase()] === 'descending' ? 'checked' : '' %>>
             <label class="arrow hover-dark descending" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
             <label class="filter-name"><%= filter %></label>
-            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
+            <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending" <%- query[filter.toLowerCase()] === 'ascending' ? 'checked' : '' %>>
             <label class="arrow hover-dark ascending" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
           </div>
-        <% }) %>   
-            <button class="filter hover-dark" type="submit"><i class="fas fa-solid fa-filter"></i></button>
+        <% }) %>
+            <button class="filter hover-dark <%= Object.values(query).length > 0 ? 'active' : ''%>" type="submit"><i class="fas fa-solid fa-filter"></i></button>
             <a class="filter hover-dark" href="/portal/takeoffs"><i class="fas fa-solid fa-xmark"></i></a>
         </div>
     </form>
