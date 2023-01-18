@@ -30,7 +30,6 @@ td {
 .search-bar input {
   border-radius: 2rem 0 0 2rem;
   outline: 0;
-  border-right: 2px solid var(--color-4);
   color: var(--color-3);
 }
 
@@ -38,24 +37,51 @@ td {
   background-color: var(--color-3);
   padding: .5rem;
   border-radius: 0 2rem 2rem 0;
+  border-left: 2px solid var(--color-4);
 }
 
 .filter {
-  background-color: var(--color-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .125rem;
   color: var(--color-3);
-  padding: .5rem .25rem;
   border-radius: 2rem;
 }
 
-button.filter {
-  padding: .5rem 1rem;
+.filter-name {
+  background-color: var(--color-1);
+  padding: .5rem .25rem;
 }
+
 
 .arrow {
   background-color: var(--color-3);
   color: var(--color-1);
-  padding: .25rem .5rem;
-  border-radius: 2rem;
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.descending {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.ascending {
+  border-radius: 0 2rem 2rem 0;
+}
+
+button.filter, a.filter {
+  height: 34px;
+  width: 34px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-3);
+}
+
+.search-bar button:hover, .arrow:hover, a.filter:hover, button.filter:hover {
+  background-color: var(--color-1);
 }
 
 .filter-nav input[type=radio] {

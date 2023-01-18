@@ -10,20 +10,21 @@
       <div class="filter-nav">
           <div class="search-bar">
             <input type="search" name="search" placeholder="Search by Address">
-            <button type="submit"><i class="fas fa-solid fa-magnifying-glass fa-xl"></i></button>
+            <button type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
           </div>
         <% filters.forEach(filter => { %>
           <div class="filter">
             <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
-            <label class="arrow" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
-            <label><%= filter %></label>
-            <label class="arrow" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
+            <label class="arrow descending" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
+            <label class="filter-name"><%= filter %></label>
+            <label class="arrow ascending" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
             <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
           </div>
         <% }) %>   
             <button class="filter" type="submit"><i class="fas fa-solid fa-filter"></i></button>
-      </div>
-    </form>
+            <a class="filter" href="/portal/takeoffs"><i class="fas fa-solid fa-xmark"></i></a>
+          </div>
+        </form>
     <table>
       <thead>
           <th>Address</th>
