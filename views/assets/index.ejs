@@ -46,13 +46,12 @@
   <table>
     <thead>
       <tr>
-        <th colspan="6">Locks</th>
+        <th colspan="5">Locks</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>Name</th>
-        <th>Handleset</th>
         <th>Finishes</th>
         <th>Price</th>
         <th>Update</th>
@@ -61,7 +60,6 @@
       <tr>
         <form action="/portal/assets/locks" method="POST">
           <td><input type="text" name="name" required placeholder="Brand Style"></td>
-          <td><input type="text" name="handlesetName" required placeholder="Brand Style"></td>
           <td class="finish-input-table">
             <div class="finish-input-row">
               <div class="finish-input">
@@ -119,7 +117,6 @@
         <tr>
           <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
             <td><input type="text" name="name" required value="<%= lock.name %>"></td>
-            <td><input type="text" name="handlesetName" required value="<%= lock.handlesetName %>"></td>
             <td class="finish-input-table">
               <div class="finish-input-row">
                 <div class="finish-input">
