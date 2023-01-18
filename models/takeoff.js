@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-// import lock to grab lock finishes to import into enum of lock finishes
-// import builders to grab list of builders to enum into builder
 
 const Schema = mongoose.Schema
 

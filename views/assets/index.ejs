@@ -31,9 +31,9 @@
       <% builders.forEach(builder => { %>
         <tr>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=PUT" method="POST">
-            <td><input class="<%= builder._id %>" type="text" name="name" required value="<%= builder.name %>"></td>
-            <td><input class="<%= builder._id %>" type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>"></td>
-            <td><input class="<%= builder._id %>" type="email" name="email" value="<%= builder.email %>"></td>
+            <td><input type="text" name="name" required value="<%= builder.name %>"></td>
+            <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>"></td>
+            <td><input type="email" name="email" value="<%= builder.email %>"></td>
             <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
           </form>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=DELETE" method="POST">
@@ -170,10 +170,44 @@
             <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
           </form>
         </tr>
-
-
-
-
+      <% }) %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="5">Users</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <% users.forEach(user => { %>
+        <tr>
+          <form action="/portal/assets/users/<%= user._id %>?_method=PUT" method="POST">
+            <td><img src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar"/> %></td>
+            <td><%= user.profile.name %></td>
+            <td>
+              <select name="role" required>
+                    <option value="<%= user.role %>"><%= user.role < 100 ? 'Foreign User' : user.role < 200 ? 'Employee' : 'Admin' %></option>
+                <% possibleRoles.forEach(possibleRole => { %>
+                  <% if (possibleRole !== user.role) { %>
+                    <option value="<%= possibleRole %>"><%= possibleRole < 100 ? 'Foreign User' : possibleRole < 200 ? 'Employee' : 'Admin' %></option>
+                  <% } %>
+                <% }) %>
+              </select>
+            </td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
+          </form>
+          <form action="/portal/assets/users/<%= user._id %>?_method=DELETE" method="POST">
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+          </form>
+        </tr>
       <% }) %>
     </tbody>
   </table>
