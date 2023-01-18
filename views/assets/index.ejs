@@ -21,9 +21,9 @@
       </tr>
       <tr>
         <form action="/portal/assets/builders" method="POST">
-          <td><input type="text" name="name" required placeholder="Builder Builder"></td>
-          <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000"></td>
-          <td><input type="email" name="email" placeholder="builder@builder.com"></td>
+          <td><input type="text" name="name" required placeholder="Builder Builder" autocomplete="off"></td>
+          <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" autocomplete="off"></td>
+          <td><input type="email" name="email" placeholder="builder@builder.com" autocomplete="off"></td>
           <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-user-plus fa-2xl"></i></button></td>
         </form>
         <td></td>
@@ -31,9 +31,9 @@
       <% builders.forEach(builder => { %>
         <tr>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=PUT" method="POST">
-            <td><input type="text" name="name" required value="<%= builder.name %>"></td>
-            <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>"></td>
-            <td><input type="email" name="email" value="<%= builder.email %>"></td>
+            <td><input type="text" name="name" required value="<%= builder.name %>" autocomplete="off"></td>
+            <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>" autocomplete="off"></td>
+            <td><input type="email" name="email" value="<%= builder.email %>" autocomplete="off"></td>
             <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
           </form>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=DELETE" method="POST">
@@ -59,7 +59,7 @@
       </tr>
       <tr>
         <form action="/portal/assets/locks" method="POST">
-          <td><input type="text" name="name" required placeholder="Brand Style"></td>
+          <td><input type="text" name="name" required placeholder="Brand Style" autocomplete="off"></td>
           <td>
             <table>
               <tbody>
@@ -92,7 +92,7 @@
                     <% for( let i = 0; i < 6; i++ ) { %>
                       <div class="lock-type-input">
                         <label for="<%= possibleLockTypes[i] %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
-                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required>
+                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required autocomplete="off">
                       </div>
                     <% } %>
                   </td>
@@ -100,7 +100,7 @@
                     <% for( let i = 6; i < possibleLockTypes.length; i++ ) { %>
                       <div class="lock-type-input">
                         <label for="<%= possibleLockTypes[i] %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
-                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required>
+                        <input type="number" name="price" id="<%= possibleLockTypes[i] %>" min="0" step="0.01" required autocomplete="off">
                       </div>
                     <% } %>
                   </td>
@@ -115,7 +115,7 @@
       <% locks.forEach(lock => { %>
         <tr>
           <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
-            <td><input type="text" name="name" required value="<%= lock.name %>"></td>
+            <td><input type="text" name="name" required value="<%= lock.name %>" autocomplete="off"></td>
             <td>
               <table>
                 <tbody>
@@ -148,7 +148,7 @@
                       <% for( let i = 0; i < 6; i++ ) { %>
                         <div class="lock-type-input">
                           <label for="<%= possibleLockTypes[i] %><%= lock._id %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
-                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>">
+                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>" autocomplete="off">
                         </div>
                       <% } %>
                     </td>
@@ -156,7 +156,7 @@
                       <% for( let i = 6; i < possibleLockTypes.length; i++ ) { %>
                         <div class="lock-type-input">
                           <label for="<%= possibleLockTypes[i] %><%= lock._id %>"><%= possibleLockTypes[i].substring(0, 3) %>:</label>
-                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>">
+                          <input type="number" name="price" id="<%= possibleLockTypes[i] %><%= lock._id %>" min="0" step="0.01" required value="<%= lock.price[i] %>" autocomplete="off">
                         </div>
                       <% } %>
                     </td>

@@ -21,12 +21,12 @@
           </div>
           <div class="deadline-input">
             <label for="deadline-input">Deadline:</label>
-            <input type="date" name="deadline" id="deadline-input" value="<%= takeoff.deadline.toISOString().substring(0, 10) %>">
+            <input type="date" name="deadline" id="deadline-input" value="<%= takeoff.deadline.toISOString().substring(0, 10) %>" autocomplete="off">
           </div>
         </td>
         <td>
           <label for="address-input">Address:</label>
-          <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required value="<%= takeoff.address %>">
+          <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required value="<%= takeoff.address %>" autocomplete="off">
         </td>
       </tr>
       <tr>
@@ -41,7 +41,7 @@
         </td>
         <td>
           <label for="lockbox-code-input">Lockbox Code:</label>
-          <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" value="<%= takeoff.lockboxCode %>">
+          <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" value="<%= takeoff.lockboxCode %>" autocomplete="off">
         </td>
       </tr>
     </tbody>
@@ -76,7 +76,7 @@
         </td>
         <td>
           <label for="key-number-input">Key Number:</label>
-          <input type="text" id="key-number-input" name="keyNumber" placeholder="00000"  value="<%= takeoff.keyNumber %>">
+          <input type="text" id="key-number-input" name="keyNumber" placeholder="00000"  value="<%= takeoff.keyNumber %>" autocomplete="off">
         </td>
       </tr>
       <tr>
@@ -95,7 +95,7 @@
           <td colspan="2">
             <div class="lock-count-input">
               <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
-              <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" min="0" required value="<%= takeoff.lockCount[idx] %>">
+              <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" min="0" required value="<%= takeoff.lockCount[idx] %>" autocomplete="off">
               <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
             </div>
           </td>
