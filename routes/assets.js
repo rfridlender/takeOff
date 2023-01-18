@@ -2,6 +2,7 @@ import { Router } from 'express'
 import * as assetsCtrl from '../controllers/assets.js'
 import * as locksCtrl from '../controllers/locks.js'
 import * as buildersCtrl from '../controllers/builders.js'
+import * as usersCtrl from '../controllers/users.js'
 
 const router = Router()
 
@@ -17,6 +18,10 @@ router.delete('/builders/:id', buildersCtrl.delete)
 router.post('/locks', locksCtrl.create)
 router.put('/locks/:id', locksCtrl.update)
 router.delete('/locks/:id', locksCtrl.delete)
+
+// User Controllers
+router.put('/users/:id', usersCtrl.update)
+router.delete('/users/:id', usersCtrl.delete)
 
 export {
   router
