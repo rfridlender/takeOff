@@ -9,7 +9,7 @@
     <form action="/portal/takeoffs" method="GET">
       <div class="filter-nav">
           <div class="search-bar">
-            <input type="search" name="search" placeholder="Search by Address">
+            <input type="search" name="search" placeholder="Search by Address" autocomplete="off" <%- query.search !== undefined ? `value="${query.search}"` : '' %>>
             <button class="hover-dark <%= query.search !== undefined ? 'active' : '' %>" type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
           </div>
         <% filters.forEach(filter => { %>
