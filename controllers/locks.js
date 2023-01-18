@@ -12,6 +12,7 @@ function create(req, res) {
 }
 
 function update(req, res) {
+  req.body.possibleFinishes = !req.body.possibleFinishes ? [] : req.body.possibleFinishes
   Lock.findByIdAndUpdate(req.params.id, req.body)
   .then(() => {
     res.redirect('/portal/assets')
