@@ -12,7 +12,7 @@ const takeoffSchema = new Schema({
   builder: {type: Schema.Types.ObjectId, ref: 'Builder'},
   lockboxCode: {type: String,},
   lock: {type: Schema.Types.ObjectId, ref: 'Lock'},
-  lockFinish: {type: String, required: true,},
+  lockFinish: {type: String, required: true, enum: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D']},
   lockCount: {type: [{type: Number, required: true, min: 0}], required: true, length: 13},
   keyNumber: {type: String, length: 5,},
   // notes: {type: [Schema.Types.ObjectId, ref:'Note']},
