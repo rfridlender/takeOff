@@ -12,6 +12,7 @@ html {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
+  line-height: 100%;
 }
 
 :root {
@@ -19,6 +20,7 @@ html {
   --color-2: #999999;
   --color-3: #333333;
   --color-4: #000000;
+  --color-primary: #880F06;
   --color-green: #007A75;
   --color-orange: #FCBE8E;
   --color-red: #FF0021;
@@ -36,7 +38,9 @@ body {
 }
 
 nav {
-  position:fixed;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.25rem;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 4rem;
@@ -45,48 +49,44 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
-.navbar {
+nav .navbar {
   height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 0;
-  gap: .5rem;
+  gap: 2rem;
 }
 
-.logo {
+nav .logo {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logo img {
+nav .logo img {
   position: relative;
-  display: inline-block;
+  display: block;
   height: 3rem;
   padding: 0;
-  display: block;
   margin: 0;
 }
 
 nav a {
-  text-decoration: none;
-  padding: 1rem;
   color: var(--color-2);
   border-radius: 2rem;
   transition: all .5s;
 }
 
 nav a:hover {
-  background-color: var(--color-3);
-  color: var(--color-1);
+  color: var(--color-primary);
 }
 
-.logo a:hover {
+nav .logo a:hover {
   background-color: #00000000;
 }
 
@@ -95,15 +95,31 @@ a.active {
 }
 
 main {
-  margin-top: 4rem;
+  font-family: 'Montserrat', sans-serif;
+  margin: 5rem 2rem 2rem 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 1rem;
+  gap: 1rem;
 }
 
-h1 {
-  margin: 1rem;
+input, select{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: .5rem;
+  border: none;
+  text-align: center;
+  border-radius: 2rem;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 button {
@@ -113,9 +129,33 @@ button {
 }
 
 a {
-  color: var(--color-4);
+  text-decoration: none;
 }
 
 i {
+  color: inherit;
+}
+
+.hover-light {
+  transition: all .5s;
+  background-color: var(--color-1);
+  color: var(--color-3);
+}
+
+.hover-light:hover {
+  background: var(--color-3);
   color: var(--color-1);
+  cursor: pointer;
+}
+
+.hover-dark {
+  transition: all .5s;
+  background-color: var(--color-3);
+  color: var(--color-1);
+}
+
+.hover-dark:hover {
+  background: var(--color-1);
+  color: var(--color-3);
+  cursor: pointer;
 }

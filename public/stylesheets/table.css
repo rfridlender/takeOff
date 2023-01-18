@@ -1,0 +1,48 @@
+table {
+  width: 100%;
+}
+
+.takeoff-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.takeoff-options button {
+  font-size: 1rem;
+  border-radius: 2rem;
+  padding: 1rem 4rem;
+}
+
+.action-button {
+  background-color: inherit;
+}
+
+.action-button:hover {
+  background-color: inherit;
+}
+
+.delete-takeoff-button {
+  padding: 1rem 4rem;
+  background-color: var(--color-red);
+  color: var(--color-1);
+  width: 16rem;
+}
+
+.return-button-container {
+  justify-content: flex-end;
+}
+
+thead {
+  background-color: var(--color-3);
+}
+
+tbody {
+  background-color: var(--color-2);
+}
+
+td, th {
+  padding: .5rem;
+  text-align: center;
+}

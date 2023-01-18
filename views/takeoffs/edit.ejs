@@ -1,153 +1,153 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/table.css">
 <link rel="stylesheet" href="/stylesheets/takeoffs/new.css">
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
-  <form action="/portal/takeoffs/<%= takeoff._id %>?_method=PUT" method="POST">
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">Job Information</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="date-input-container">
-            <div class="date-input">
-              <label>Date:</label>
-              <label><%= takeoff.createdAt.toString().substring(0,16) %></label>
-            </div>
-            <div class="deadline-input">
-              <label for="deadline-input">Deadline:</label>
-              <input type="date" name="deadline" id="deadline-input" value="<%= takeoff.deadline.toISOString().substring(0, 10) %>">
-            </div>
-          </td>
-          <td>
-            <label for="address-input">Address:</label>
-            <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required value="<%= takeoff.address %>">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="builder-input">Builder:</label>
-            <select name="builder" id="builder-input" required>
-                <option value="<%= takeoff.builder._id %>"><%= takeoff.builder.name %></option>
-              <% builders.forEach(builder => { %>
-                <option value="<%= builder._id %>"><%= builder.name %></option>
+  <table>
+    <form action="/portal/takeoffs/<%= takeoff._id %>?_method=PUT" method="POST">
+    <thead>
+      <tr>
+        <th colspan="2">Job Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-input-container">
+          <div class="date-input">
+            <label>Date:</label>
+            <label><%= takeoff.createdAt.toString().substring(0,16) %></label>
+          </div>
+          <div class="deadline-input">
+            <label for="deadline-input">Deadline:</label>
+            <input type="date" name="deadline" id="deadline-input" value="<%= takeoff.deadline.toISOString().substring(0, 10) %>">
+          </div>
+        </td>
+        <td>
+          <label for="address-input">Address:</label>
+          <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required value="<%= takeoff.address %>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="builder-input">Builder:</label>
+          <select name="builder" id="builder-input" required>
+              <option value="<%= takeoff.builder._id %>"><%= takeoff.builder.name %></option>
+            <% builders.forEach(builder => { %>
+              <option value="<%= builder._id %>"><%= builder.name %></option>
+            <% }) %>
+          </select>
+        </td>
+        <td>
+          <label for="lockbox-code-input">Lockbox Code:</label>
+          <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" value="<%= takeoff.lockboxCode %>">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">Locks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label for="lock-input">Style:</label>
+          <select name="lock" id="lock-input" required>
+              <option value="<%= takeoff.lock._id %>"><%= takeoff.lock.name %></option>
+              <% locks.forEach(lock => { %>
+                <option value="<%= lock._id %>"><%= lock.name %></option>
               <% }) %>
-            </select>
-          </td>
-          <td>
-            <label for="lockbox-code-input">Lockbox Code:</label>
-            <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" value="<%= takeoff.lockboxCode %>">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th colspan="3">Locks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <label for="lock-input">Style:</label>
-            <select name="lock" id="lock-input" required>
-                <option value="<%= takeoff.lock._id %>"><%= takeoff.lock.name %></option>
-                <% locks.forEach(lock => { %>
-                  <option value="<%= lock._id %>"><%= lock.name %></option>
-                <% }) %>
-            </select>
-          </td>
-          <td>
-            <label for="lock-finish-input">Finish:</label>
-            <select name="lockFinish" id="lock-finish-input" required>
-              <option value="<%= takeoff.lockFinish %>"><%= takeoff.lockFinish %></option>
-                <% possibleFinishes.forEach(possibleFinish => { %>
-                  <% if (possibleFinish !== takeoff.lockFinish) { %>
-                    <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
-                  <% } %>
-                <% }) %>
-            </select>
-          </td>
-          <td>
-            <label for="key-number-input">Key Number:</label>
-            <input type="text" id="key-number-input" name="keyNumber" placeholder="00000"  value="<%= takeoff.keyNumber %>">
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <label>Type</label>
-          </th>
-          <th colspan="2">
-            <label>Count</label>
-          </th>
-        </tr>
-        <% possibleLockTypes.forEach((possibleLockType, idx) => { %>
-          <tr>
-            <td>
-              <label for="<%= possibleLockType.toLowerCase() %>-input"><%= possibleLockType %></label>
-            </td>
-            <td colspan="2">
-              <div class="lock-count-input">
-                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
-                <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" min="0" required value="<%= takeoff.lockCount[idx] %>">
-                <div class="operator" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
-              </div>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">Job Status</th>
-        </tr>
-      </thead>
-      <tbody>
+          </select>
+        </td>
+        <td>
+          <label for="lock-finish-input">Finish:</label>
+          <select name="lockFinish" id="lock-finish-input" required>
+            <option value="<%= takeoff.lockFinish %>"><%= takeoff.lockFinish %></option>
+              <% possibleFinishes.forEach(possibleFinish => { %>
+                <% if (possibleFinish !== takeoff.lockFinish) { %>
+                  <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
+                <% } %>
+              <% }) %>
+          </select>
+        </td>
+        <td>
+          <label for="key-number-input">Key Number:</label>
+          <input type="text" id="key-number-input" name="keyNumber" placeholder="00000"  value="<%= takeoff.keyNumber %>">
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label>Type</label>
+        </th>
+        <th colspan="2">
+          <label>Count</label>
+        </th>
+      </tr>
+      <% possibleLockTypes.forEach((possibleLockType, idx) => { %>
         <tr>
           <td>
-            <label for="job-status-input">Status:</label>
-            <select name="jobStatus" id="job-status-input">
-                  <option value="<%= takeoff.jobStatus %>">
-                    <%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%>
-                  </option>
-                <% remainingStatuses().forEach(remainingStatus => { %>
-                  <option value="<%= remainingStatus %>">
-                    <%= remainingStatus === 0 ? 'Not Started' : remainingStatus === 1 ? 'In Progress' : 'Completed'%>
-                  </option>
-                <% }) %>
-            </select>
+            <label for="<%= possibleLockType.toLowerCase() %>-input"><%= possibleLockType %></label>
           </td>
-          <td>
-            <label for="installers-input">Installers:</label>
+          <td colspan="2">
+            <div class="lock-count-input">
+              <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
+              <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" min="0" required value="<%= takeoff.lockCount[idx] %>">
+              <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
+            </div>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Job Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label for="job-status-input">Status:</label>
+          <select name="jobStatus" id="job-status-input">
+                <option value="<%= takeoff.jobStatus %>">
+                  <%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%>
+                </option>
+              <% remainingStatuses().forEach(remainingStatus => { %>
+                <option value="<%= remainingStatus %>">
+                  <%= remainingStatus === 0 ? 'Not Started' : remainingStatus === 1 ? 'In Progress' : 'Completed'%>
+                </option>
+              <% }) %>
+          </select>
+        </td>
+        <td>
+          <label for="installers-input">Installers:</label>
 
-            
-            <!-- <input  -->
-            <!-- type="text"  -->
-            <!-- id="installers-input"  -->
-            <!-- name="installers"  -->
-            <%# installers ? `value="${takeoff.installers}"` : 'placeholder="Installer Installer"'%>
-            <!-- > -->
- 
+          
+          <!-- <input  -->
+          <!-- type="text"  -->
+          <!-- id="installers-input"  -->
+          <!-- name="installers"  -->
+          <%# installers ? `value="${takeoff.installers}"` : 'placeholder="Installer Installer"'%>
+          <!-- > -->
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div>
-      <button type="submit">Update</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="takeoff-options">
+    <button class="hover-light" type="submit">Update</button>
     </form>
     <form action="/portal/takeoffs/<%= takeoff._id %>?_method=DELETE" method="POST">
-      <button class="delete-takeoff-button" type="submit">Delete Takeoff</button>
+    <button class="delete-takeoff-button hover-light" type="submit">Delete Takeoff</button>
     </form>
-      <a href="/portal/takeoffs"><button type="button">Cancel</button></a>
-    </div>
+    <a href="/portal/takeoffs"><button class="hover-light" type="button">Cancel</button></a>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

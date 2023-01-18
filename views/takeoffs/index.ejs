@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/table.css">
 <link rel="stylesheet" href="/stylesheets/takeoffs/index.css">
 <%- include('../partials/nav') %>
 
@@ -10,50 +10,50 @@
       <div class="filter-nav">
           <div class="search-bar">
             <input type="search" name="search" placeholder="Search by Address">
-            <button type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
+            <button class="hover-dark" type="submit"><i class="fas fa-solid fa-magnifying-glass fa-l"></i></button>
           </div>
         <% filters.forEach(filter => { %>
           <div class="filter">
             <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-descending" value="descending">
-            <label class="arrow descending" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
+            <label class="arrow hover-dark descending" for="<%= filter.toLowerCase() %>-descending"><i class="fas fa-solid fa-angle-down"></i></label>
             <label class="filter-name"><%= filter %></label>
-            <label class="arrow ascending" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
             <input type="radio" name="<%= filter.toLowerCase() %>" id="<%= filter.toLowerCase() %>-ascending" value="ascending">
+            <label class="arrow hover-dark ascending" for="<%= filter.toLowerCase() %>-ascending"><i class="fas fa-solid fa-angle-up"></i></label>
           </div>
         <% }) %>   
-            <button class="filter" type="submit"><i class="fas fa-solid fa-filter"></i></button>
-            <a class="filter" href="/portal/takeoffs"><i class="fas fa-solid fa-xmark"></i></a>
-          </div>
-        </form>
-    <table>
-      <thead>
-          <th>Address</th>
-          <th>Deadline</th>
-          <th>Builder</th>
-          <th>Created By</th>
-        <% if (user.role < 200) { %>
-          <th>Details</th>
-        <% } else { %>
-          <th>Update</th>
-        <% } %>
-      </thead>
-      <tbody>
-        <% takeoffs.forEach(takeoff => { %>
-          <tr class="job-status-<%= takeoff.jobStatus %>">
-              <td><%= takeoff.address %></td>
-              <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
-              <td><%= takeoff.builder.name %></td>
-              <td><%= takeoff.createdBy.name %></td>
-            <% if (user.role < 200) { %>
-              <td><a href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-eye fa-2xl"></i></i></a></td>
-            <% } else { %>
-              <td><a href="/portal/takeoffs/<%= takeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
-            <% } %>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
+            <button class="filter hover-dark" type="submit"><i class="fas fa-solid fa-filter"></i></button>
+            <a class="filter hover-dark" href="/portal/takeoffs"><i class="fas fa-solid fa-xmark"></i></a>
+        </div>
+    </form>
   </div>
+  <table>
+    <thead>
+        <th>Address</th>
+        <th>Deadline</th>
+        <th>Builder</th>
+        <th>Created By</th>
+      <% if (user.role < 200) { %>
+        <th>Details</th>
+      <% } else { %>
+        <th>Update</th>
+      <% } %>
+    </thead>
+    <tbody>
+      <% takeoffs.forEach(takeoff => { %>
+        <tr class="job-status-<%= takeoff.jobStatus %>">
+            <td><%= takeoff.address %></td>
+            <td><%= takeoff.deadline.toDateString().substring(0, 10) %></td>
+            <td><%= takeoff.builder.name %></td>
+            <td><%= takeoff.createdBy.name %></td>
+          <% if (user.role < 200) { %>
+            <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= takeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
+          <% } else { %>
+            <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= takeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
+          <% } %>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </main>
 
 <%- include('../partials/footer') %>

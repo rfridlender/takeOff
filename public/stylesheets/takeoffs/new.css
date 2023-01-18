@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 1rem;
 }
 
 .lock-count-input {
@@ -21,17 +22,5 @@
 .lock-count-input .operator {
   flex: 1;
   padding: .5rem 2rem;
-  background-color: #333333;
   border-radius: 2rem;
-}
-
-.delete-takeoff-button {
-  padding: 1rem 4rem;
-  background-color: var(--color-red);
-  color: var(--color-1);
-  width: 16rem;
-}
-
-.return-button-container {
-  justify-content: flex-end;
 }

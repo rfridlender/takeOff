@@ -1,186 +1,184 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/table.css">
 <link rel="stylesheet" href="/stylesheets/assets/index.css">
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
-  <div>
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="5">Builders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <form action="/portal/assets/builders" method="POST">
+          <td><input type="text" name="name" required placeholder="Builder Builder"></td>
+          <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000"></td>
+          <td><input type="email" name="email" placeholder="builder@builder.com"></td>
+          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-user-plus fa-2xl"></i></button></td>
+        </form>
+        <td></td>
+      </tr>
+      <% builders.forEach(builder => { %>
         <tr>
-          <th colspan="5">Builders</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Email</th>
-          <th>Update</th>
-          <th>Delete</th>
-        </tr>
-        <tr>
-          <form action="/portal/assets/builders" method="POST">
-            <td><input type="text" name="name" required placeholder="Builder Builder"></td>
-            <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000"></td>
-            <td><input type="email" name="email" placeholder="builder@builder.com"></td>
-            <td><button type="submit"><i class="fas fa-solid fa-user-plus fa-2xl"></i></button></td>
+          <form action="/portal/assets/builders/<%= builder._id %>?_method=PUT" method="POST">
+            <td><input class="<%= builder._id %>" type="text" name="name" required value="<%= builder.name %>"></td>
+            <td><input class="<%= builder._id %>" type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>"></td>
+            <td><input class="<%= builder._id %>" type="email" name="email" value="<%= builder.email %>"></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
           </form>
-          <td></td>
+          <form action="/portal/assets/builders/<%= builder._id %>?_method=DELETE" method="POST">
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+          </form>
         </tr>
-        <% builders.forEach(builder => { %>
-          <tr>
-            <form action="/portal/assets/builders/<%= builder._id %>?_method=PUT" method="POST">
-              <td><input class="<%= builder._id %>" type="text" name="name" required value="<%= builder.name %>"></td>
-              <td><input class="<%= builder._id %>" type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>"></td>
-              <td><input class="<%= builder._id %>" type="email" name="email" value="<%= builder.email %>"></td>
-              <td><button type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
-            </form>
-            <form action="/portal/assets/builders/<%= builder._id %>?_method=DELETE" method="POST">
-              <td><button type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
-            </form>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-    <table>
-      <thead>
+      <% }) %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="6">Locks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Handleset</th>
+        <th>Finishes</th>
+        <th>Price</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <form action="/portal/assets/locks" method="POST">
+          <td><input type="text" name="name" required placeholder="Brand Style"></td>
+          <td><input type="text" name="handlesetName" required placeholder="Brand Style"></td>
+          <td class="finish-input-table">
+            <div class="finish-input-row">
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US3" value="US3">
+                <label for="US3">US3</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US5" value="US5">
+                <label for="US5">US5</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US10B" value="US10B">
+                <label for="US10B">US10B</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US11P" value="US11P">
+                <label for="US11P">US11P</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US15" value="US15">
+                <label for="US15">US15</label>
+              </div>
+            </div>
+            <div class="finish-input-row">
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US15A" value="US15A">
+                <label for="US15A">US15A</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US19" value="US19">
+                <label for="US19">US19</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US26" value="US26">
+                <label for="US26">US26</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US26D" value="US26D">
+                <label for="US26D">US26D</label>
+              </div>
+              <div class="finish-input">
+                <input type="checkbox" name="possibleFinishes" id="US32D" value="US32D">
+                <label for="US32D">US32D</label>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="number" name="price" min="0" step="0.01" required>
+          </td>
+          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-plus fa-2xl"></i></button></td>
+        </form>
+        <td></td>
+      </tr>
+      <% locks.forEach(lock => { %>
         <tr>
-          <th colspan="6">Locks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Handleset</th>
-          <th>Finishes</th>
-          <th>Price</th>
-          <th>Update</th>
-          <th>Delete</th>
-        </tr>
-        <tr>
-          <form action="/portal/assets/locks" method="POST">
-            <td><input type="text" name="name" required placeholder="Brand Style"></td>
-            <td><input type="text" name="handlesetName" required placeholder="Brand Style"></td>
+          <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
+            <td><input type="text" name="name" required value="<%= lock.name %>"></td>
+            <td><input type="text" name="handlesetName" required value="<%= lock.handlesetName %>"></td>
             <td class="finish-input-table">
               <div class="finish-input-row">
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US3" value="US3">
-                  <label for="US3">US3</label>
+                  <input type="checkbox" name="possibleFinishes" id="US3<%= lock._id %>" value="US3" <%- lock.possibleFinishes.includes('US3') ? 'checked' : '' %>>
+                  <label for="US3<%= lock._id %>">US3</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US5" value="US5">
-                  <label for="US5">US5</label>
+                  <input type="checkbox" name="possibleFinishes" id="US5<%= lock._id %>" value="US5" <%- lock.possibleFinishes.includes('US5') ? 'checked' : '' %>>
+                  <label for="US5<%= lock._id %>">US5</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US10B" value="US10B">
-                  <label for="US10B">US10B</label>
+                  <input type="checkbox" name="possibleFinishes" id="US10B<%= lock._id %>" value="US10B" <%- lock.possibleFinishes.includes('US10B') ? 'checked' : '' %>>
+                  <label for="US10B<%= lock._id %>">US10B</label>
+                </div>
+  
+                <div class="finish-input">
+                  <input type="checkbox" name="possibleFinishes" id="US11P<%= lock._id %>" value="US11P" <%- lock.possibleFinishes.includes('US11P') ? 'checked' : '' %>>
+                  <label for="US11P<%= lock._id %>">US11P</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US11P" value="US11P">
-                  <label for="US11P">US11P</label>
-                </div>
-                <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US15" value="US15">
-                  <label for="US15">US15</label>
+                  <input type="checkbox" name="possibleFinishes" id="US15<%= lock._id %>" value="US15" <%- lock.possibleFinishes.includes('US15') ? 'checked' : '' %>>
+                  <label for="US15<%= lock._id %>">US15</label>
                 </div>
               </div>
               <div class="finish-input-row">
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US15A" value="US15A">
-                  <label for="US15A">US15A</label>
+                  <input type="checkbox" name="possibleFinishes" id="US15A<%= lock._id %>" value="US15A" <%- lock.possibleFinishes.includes('US15A') ? 'checked' : '' %>>
+                  <label for="US15A<%= lock._id %>">US15A</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US19" value="US19">
-                  <label for="US19">US19</label>
+                  <input type="checkbox" name="possibleFinishes" id="US19<%= lock._id %>" value="US19" <%- lock.possibleFinishes.includes('US19') ? 'checked' : '' %>>
+                  <label for="US19<%= lock._id %>">US19</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US26" value="US26">
-                  <label for="US26">US26</label>
+                  <input type="checkbox" name="possibleFinishes" id="US26<%= lock._id %>" value="US26" <%- lock.possibleFinishes.includes('US26') ? 'checked' : '' %>>
+                  <label for="US26<%= lock._id %>">US26</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US26D" value="US26D">
-                  <label for="US26D">US26D</label>
+                  <input type="checkbox" name="possibleFinishes" id="US26D<%= lock._id %>" value="US26D" <%- lock.possibleFinishes.includes('US26D') ? 'checked' : '' %>>
+                  <label for="US26D<%= lock._id %>">US26D</label>
                 </div>
                 <div class="finish-input">
-                  <input type="checkbox" name="possibleFinishes" id="US32D" value="US32D">
-                  <label for="US32D">US32D</label>
+                  <input type="checkbox" name="possibleFinishes" id="US32D<%= lock._id %>" value="US32D" <%- lock.possibleFinishes.includes('US32D') ? 'checked' : '' %>>
+                  <label for="US32D<%= lock._id %>">US32D</label>
                 </div>
               </div>
             </td>
             <td>
-              <input type="number" name="price" min="0" step="0.01" required>
+              <input type="number" name="price" min="0" step="0.01" required value="<%= lock.price %>" size="4">
             </td>
-            <td><button type="submit"><i class="fas fa-solid fa-plus fa-2xl"></i></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></button></td>
           </form>
-          <td></td>
+          <form action="/portal/assets/locks/<%= lock._id %>?_method=DELETE" method="POST">
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+          </form>
         </tr>
-        <% locks.forEach(lock => { %>
-          <tr>
-            <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
-              <td><input type="text" name="name" required value="<%= lock.name %>"></td>
-              <td><input type="text" name="handlesetName" required value="<%= lock.handlesetName %>"></td>
-              <td class="finish-input-table">
-                <div class="finish-input-row">
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US3<%= lock._id %>" value="US3" <%- lock.possibleFinishes.includes('US3') ? 'checked' : '' %>>
-                    <label for="US3<%= lock._id %>">US3</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US5<%= lock._id %>" value="US5" <%- lock.possibleFinishes.includes('US5') ? 'checked' : '' %>>
-                    <label for="US5<%= lock._id %>">US5</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US10B<%= lock._id %>" value="US10B" <%- lock.possibleFinishes.includes('US10B') ? 'checked' : '' %>>
-                    <label for="US10B<%= lock._id %>">US10B</label>
-                  </div>
-    
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US11P<%= lock._id %>" value="US11P" <%- lock.possibleFinishes.includes('US11P') ? 'checked' : '' %>>
-                    <label for="US11P<%= lock._id %>">US11P</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US15<%= lock._id %>" value="US15" <%- lock.possibleFinishes.includes('US15') ? 'checked' : '' %>>
-                    <label for="US15<%= lock._id %>">US15</label>
-                  </div>
-                </div>
-                <div class="finish-input-row">
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US15A<%= lock._id %>" value="US15A" <%- lock.possibleFinishes.includes('US15A') ? 'checked' : '' %>>
-                    <label for="US15A<%= lock._id %>">US15A</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US19<%= lock._id %>" value="US19" <%- lock.possibleFinishes.includes('US19') ? 'checked' : '' %>>
-                    <label for="US19<%= lock._id %>">US19</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US26<%= lock._id %>" value="US26" <%- lock.possibleFinishes.includes('US26') ? 'checked' : '' %>>
-                    <label for="US26<%= lock._id %>">US26</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US26D<%= lock._id %>" value="US26D" <%- lock.possibleFinishes.includes('US26D') ? 'checked' : '' %>>
-                    <label for="US26D<%= lock._id %>">US26D</label>
-                  </div>
-                  <div class="finish-input">
-                    <input type="checkbox" name="possibleFinishes" id="US32D<%= lock._id %>" value="US32D" <%- lock.possibleFinishes.includes('US32D') ? 'checked' : '' %>>
-                    <label for="US32D<%= lock._id %>">US32D</label>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <input type="number" name="price" min="0" step="0.01" required value="<%= lock.price %>" size="4">
-              </td>
-              <td><button type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></button></td>
-            </form>
-            <form action="/portal/assets/locks/<%= lock._id %>?_method=DELETE" method="POST">
-              <td><button type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
-            </form>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
+      <% }) %>
+    </tbody>
+  </table>
 </main>
 
 <%- include('../partials/footer') %>
