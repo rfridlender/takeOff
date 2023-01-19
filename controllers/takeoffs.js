@@ -80,9 +80,21 @@ function index(req, res) {
           return a.jobStatus - b.jobStatus
         })
     }
+    let overdueTakeoffs = takeoffs.filter(takeoff => {
+      return takeoff.deadline < new Date() && takeoff.jobStatus !== 2 ? true : false
+    })
+    let currentTakeoffs = takeoffs.filter(takeoff => {
+      return takeoff.deadline >= new Date() && takeoff.jobStatus !== 2 ? true : false
+    })
+    let completedTakeoffs = takeoffs.filter(takeoff => {
+      return takeoff.jobStatus === 2 ? true : false
+    })
     res.render('takeoffs/index', {
       title: 'Takeoffs',
       takeoffs,
+      overdueTakeoffs,
+      currentTakeoffs,
+      completedTakeoffs,
       filters: ['Status', 'Address', 'Deadline', 'Builder', 'Created By'],
       query: req.query
     })
