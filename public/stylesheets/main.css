@@ -28,8 +28,7 @@ html {
 
 body {
   /* Use a system font, if none are available use any found sans-sarif font */
-  font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
-    'Helvetica Neue', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin: 0;
   background-color: var(--color-4);
   color: var(--color-1);
@@ -38,7 +37,6 @@ body {
 }
 
 nav {
-  font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.25rem;
   position: fixed;
   top: 0;
@@ -86,16 +84,19 @@ nav a:hover {
   color: var(--color-primary);
 }
 
-nav .logo a:hover {
-  background-color: #00000000;
-}
-
 a.active {
   color: var(--color-4);
 }
 
+nav .logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  color: var(--color-4);
+}
+
 main {
-  font-family: 'Montserrat', sans-serif;
   margin: 5rem auto;
   display: flex;
   align-items: center;
@@ -110,12 +111,8 @@ main {
   }
 }
 
-h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-}
-
 input, select{
-  font-family: 'Montserrat', sans-serif;
+  font-family: inherit;
   font-size: 1rem;
   padding: .5rem;
   border: none;

@@ -2,6 +2,22 @@ main > div {
   width: 100%;
 }
 
+.takeoffs-meta-table th:nth-child(1), .takeoffs-meta-table td:nth-child(1) {
+  width: 30%;
+}
+
+.takeoffs-meta-table th:nth-child(2), .takeoffs-meta-table td:nth-child(2) {
+  width: 12.5%;
+}
+
+.takeoffs-meta-table th:nth-child(5), .takeoffs-meta-table td:nth-child(5) {
+  width: 7.5%;
+}
+
+.takeoffs-meta-table th:nth-child(3), .takeoffs-meta-table td:nth-child(3), .takeoffs-meta-table th:nth-child(4), .takeoffs-meta-table td:nth-child(4) {
+  width: 15%;
+}
+
 .filter-nav {
   display: flex;
   justify-content: center;
