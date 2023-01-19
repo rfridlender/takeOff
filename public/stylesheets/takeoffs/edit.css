@@ -1,4 +1,4 @@
-/* .installers-input-container {
+.installers-input-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,4 +23,4 @@
 .installers-input input[type=checkbox]:checked + label {
   background-color: var(--color-3);
   color: var(--color-1);
-} */
+}

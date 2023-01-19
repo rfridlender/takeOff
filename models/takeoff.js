@@ -18,10 +18,12 @@ const takeoffSchema = new Schema({
   // notes: {type: [Schema.Types.ObjectId, ref:'Note']},
   jobStatus: {type: Number, required: true, default: 0, enum: [0, 1, 2]},
   installers: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
-  deadline: {type: Date, min: new Date(), required: true}
+  deadline: {type: Date, required: true}
 }, {
   timestamps: true,
 })
+
+// min: new Date(), 
 
 const Takeoff = mongoose.model('Takeoff', takeoffSchema)
 

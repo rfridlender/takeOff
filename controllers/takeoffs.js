@@ -9,75 +9,76 @@ function index(req, res) {
   .populate('createdBy')
   .populate('builder')
   .then(takeoffs => {
-    takeoffs.sort((a, b) => {
-      return a.jobStatus - b.jobStatus
-    })
     if (req.query.search) {
       takeoffs = takeoffs.filter(takeoff => {
         return takeoff.address.toLowerCase().includes(req.query.search.toLowerCase()) ? true : false
       })
     }
-    if (req.query.status) {
-      if (req.query.status === 'ascending') {
+    switch (req.query.sort) {
+      case 'status-asc':
         takeoffs.sort((a, b) => {
           return a.jobStatus - b.jobStatus
         })
-      }
-      if (req.query.status === 'descending') {
+        break;
+      case 'status-desc':
         takeoffs.sort((a, b) => {
           return b.jobStatus - a.jobStatus
         })
-      }
-    }
-    if (req.query.address) {
-      if (req.query.address) {
-        if (req.query.address === 'ascending') {
-          takeoffs.sort((a, b) => {
-            return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? -1 : 1
-          })
-        }
-        if (req.query.address === 'descending') {
-          takeoffs.sort((a, b) => {
-            return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? 1 : -1
-          })
-        }
-      }
-    }
-    if (req.query.builder) {
-      if (req.query.builder === 'ascending') {
+        break;
+      case 'address-asc':
         takeoffs.sort((a, b) => {
-          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? -1 : 1
+          return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? -1 : 1
         })
-      }
-      if (req.query.builder === 'descending') {
+        break;
+      case 'address-desc':
         takeoffs.sort((a, b) => {
-          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? 1 : -1
+          return a.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') < b.address.toLowerCase().replace(/[0-9]/g, '').replace(' ', '') ? 1 : -1
         })
-      }
-    }
-    if (req.query.deadline) {
-      if (req.query.deadline === 'ascending') {
-        takeoffs.sort((a, b) => {
+        break;
+      case 'deadline-asc':
+        let pastTakeoffs = takeoffs.filter(takeoff => {
+          return takeoff.deadline < new Date() ? true : false
+        })
+        let currentTakeoffs = takeoffs.filter(takeoff => {
+          return takeoff.deadline <= new Date() ? false : true
+        })
+        currentTakeoffs = currentTakeoffs.sort((a, b) => {
           return a.deadline - b.deadline
         })
-      }
-      if (req.query.deadline === 'descending') {
+        pastTakeoffs = pastTakeoffs.sort((a, b) => {
+          return a.deadline - b.deadline
+        })
+        takeoffs = [...currentTakeoffs, ...pastTakeoffs]
+        break;
+      case 'deadline-desc':
         takeoffs.sort((a, b) => {
           return b.deadline - a.deadline
         })
-      }
-    }
-    if (req.query['created by']) {
-      if (req.query['created by'] === 'ascending') {
+        break;
+      case 'builder-asc':
+        takeoffs.sort((a, b) => {
+          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? -1 : 1
+        })
+        break;
+      case 'builder-desc':
+        takeoffs.sort((a, b) => {
+          return a.builder.name.toLowerCase() < b.builder.name.toLowerCase() ? 1 : -1
+        })
+        break;
+      case 'created by-asc':
         takeoffs.sort((a, b) => {
           return a.createdBy.name.toLowerCase() < b.createdBy.name.toLowerCase() ? -1 : 1
         })
-      }
-      if (req.query['created by'] === 'descending') {
+        break;
+      case 'created by-desc':
         takeoffs.sort((a, b) => {
           return a.createdBy.name.toLowerCase() < b.createdBy.name.toLowerCase() ? 1 : -1
         })
-      }
+        break;
+      default:
+        takeoffs.sort((a, b) => {
+          return a.jobStatus - b.jobStatus
+        })
     }
     res.render('takeoffs/index', {
       title: 'Takeoffs',
