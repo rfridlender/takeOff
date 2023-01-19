@@ -28,17 +28,20 @@ table {
 }
 
 .action-button {
-  background-color: inherit;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  transition: all .5s
 }
 
 .action-button:hover {
-  background-color: inherit;
+  background-color: transparent;
+  color: var(--color-2);
+  border: none;
 }
 
 .delete-takeoff-button {
   padding: 1rem 4rem;
-  background-color: var(--color-red);
-  color: var(--color-1);
   width: 16rem;
 }
 
@@ -46,15 +49,20 @@ table {
   justify-content: flex-end;
 }
 
-thead {
-  background-color: var(--color-3);
-}
-
-tbody {
-  background-color: var(--color-2);
-}
-
 td, th {
   padding: .5rem;
   text-align: center;
+}
+
+th {
+  border-bottom: 1px solid var(--color-2-opacity);
+}
+
+td {
+  background-color: var(--color-3-opacity);
+  border-radius: .25rem;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }

@@ -68,7 +68,7 @@
                     <% for( let i = 0; i < 5; i++ ) { %>
                       <div class="finish-input">
                         <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
-                        <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
+                        <label class="hover-dark" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
                       </div>
                     <% } %>
                   </td>
@@ -76,7 +76,7 @@
                     <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
                       <div class="finish-input">
                         <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %>" value="<%= possibleFinishes[i] %>">
-                        <label class="hover-light" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
+                        <label class="hover-dark" for="<%= possibleFinishes[i] %>"><%= possibleFinishes[i] %></label>
                       </div>
                     <% } %>
                   </td>
@@ -124,7 +124,7 @@
                       <% for( let i = 0; i < 5; i++ ) { %>
                         <div class="finish-input">
                           <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
-                          <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
+                          <label class="hover-dark" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
                         </div>
                       <% } %>
                     </td>
@@ -132,7 +132,7 @@
                       <% for( let i = 5; i < possibleFinishes.length; i++ ) { %>
                         <div class="finish-input">
                           <input type="checkbox" name="possibleFinishes" id="<%= possibleFinishes[i] %><%= lock._id %>" value="<%= possibleFinishes[i] %>" <%- lock.possibleFinishes.includes(possibleFinishes[i]) ? 'checked' : '' %>>
-                          <label class="hover-light" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
+                          <label class="hover-dark" for="<%= possibleFinishes[i] %><%= lock._id %>"><%= possibleFinishes[i] %></label>
                         </div>
                       <% } %>
                     </td>

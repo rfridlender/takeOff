@@ -24,7 +24,22 @@ html {
   --color-green: #799351;
   --color-orange: #FFA36C;
   --color-red: #880F06;
+  --color-1-opacity: #FFFFFFBF;
+  --color-2-opacity: #99999980;
+  --color-3-opacity: #33333340;
+  --color-4-opacity: #000000BF;
+  --color-primary-opacity: #880F0680;
+  --color-green-opacity: #79935180;
+  --color-orange-opacity: #FFA36C80;
+  --color-red-opacity: #880F0680;
 }
+
+/* Opacity Table
+100% - FF
+75% - BF
+50% - 80
+25% - 40
+0% - 00 */
 
 body {
   /* Use a system font, if none are available use any found sans-sarif font */
@@ -43,11 +58,19 @@ nav {
   width: 100%;
   height: 4rem;
   z-index: 1;
-  background-color: var(--color-1);
+  background-color: var(--color-4-opacity);
+  border-bottom: 1px solid var(--color-2-opacity);
+  box-shadow: 0 .25rem 2rem var(--color-4);
+  backdrop-filter: blur(1px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  transition: all .5s;
+}
+
+nav:hover {
+  background-color: var(--color-4);
 }
 
 nav .navbar {
@@ -85,7 +108,7 @@ nav a:hover {
 }
 
 a.active {
-  color: var(--color-4);
+  color: var(--color-1);
 }
 
 nav .logout-container {
@@ -93,7 +116,7 @@ nav .logout-container {
   justify-content: center;
   align-items: center;
   gap: .5rem;
-  color: var(--color-4);
+  color: var(--color-1);
 }
 
 main {
@@ -113,6 +136,10 @@ input, select, input[type=checkbox] + label {
   border: none;
   text-align: center;
   border-radius: 2rem;
+  background-color: var(--color-4);
+  color: var(--color-1);
+  border: 1px solid var(--color-2-opacity);
+  outline: none;
 }
 
 select {
@@ -141,24 +168,43 @@ i {
 
 .hover-light {
   transition: all .5s;
-  background-color: var(--color-1);
-  color: var(--color-3);
+  background-color: var(--color-2);
+  color: var(--color-4);
+  border: 1px solid var(--color-2-opacity);
 }
 
 .hover-light:hover {
-  background: var(--color-3);
-  color: var(--color-1);
+  background: var(--color-4);
+  color: var(--color-2);
+  border: 1px solid var(--color-2-opacity);
   cursor: pointer;
 }
 
 .hover-dark {
   transition: all .5s;
-  background-color: var(--color-3);
-  color: var(--color-1);
+  background-color: var(--color-4);
+  color: var(--color-2);
+  border: 1px solid var(--color-2-opacity);
 }
 
 .hover-dark:hover {
-  background: var(--color-1);
-  color: var(--color-3);
+  background: var(--color-2);
+  color: var(--color-4);
+  border: 1px solid var(--color-2-opacity);
   cursor: pointer;
 }
+
+.hover-primary {
+  transition: all .5s;
+  background-color: var(--color-primary);
+  color: var(--color-1);
+  border: 1px solid var(--color-2-opacity);
+}
+
+.hover-primary:hover {
+  background: var(--color-4);
+  color: var(--color-2);
+  border: 1px solid var(--color-2-opacity);
+  cursor: pointer;
+}
+

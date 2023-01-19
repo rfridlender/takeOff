@@ -28,10 +28,12 @@
 }
 
 .installers-input label:hover {
+  background-color: var(--color-2);
+  color: var(--color-4);
   cursor: pointer;
 }
 
 .installers-input input[type=checkbox]:checked + label {
-  background-color: var(--color-3);
+  background-color: var(--color-primary);
   color: var(--color-1);
 }

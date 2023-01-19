@@ -51,12 +51,12 @@
             <tr class="job-status-<%= overdueTakeoff.jobStatus %>">
                 <td><%= overdueTakeoff.address %></td>
                 <td><%= overdueTakeoff.deadline.toDateString().substring(0, 10) %></td>
-                <td><%= overdueTakeoff.builder.name %></td>
-                <td><%= overdueTakeoff.createdBy.name %></td>
+                <td><%= overdueTakeoff.builder?.name %></td>
+                <td><%= overdueTakeoff.createdBy?.name %></td>
               <% if (user.role < 200) { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= overdueTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= overdueTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
               <% } else { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= overdueTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= overdueTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
               <% } %>
             </tr>
         <% }) %>
@@ -75,12 +75,12 @@
             <tr class="job-status-<%= currentTakeoff.jobStatus %>">
                 <td><%= currentTakeoff.address %></td>
                 <td><%= currentTakeoff.deadline.toDateString().substring(0, 10) %></td>
-                <td><%= currentTakeoff.builder.name %></td>
-                <td><%= currentTakeoff.createdBy.name %></td>
+                <td><%= currentTakeoff.builder?.name %></td>
+                <td><%= currentTakeoff.createdBy?.name %></td>
               <% if (user.role < 200) { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= currentTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= currentTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
               <% } else { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= currentTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= currentTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
               <% } %>
             </tr>
         <% }) %>
@@ -103,12 +103,12 @@
             <tr class="job-status-<%= completedTakeoff.jobStatus %>">
                 <td><%= completedTakeoff.address %></td>
                 <td><%= completedTakeoff.deadline.toDateString().substring(0, 10) %></td>
-                <td><%= completedTakeoff.builder.name %></td>
-                <td><%= completedTakeoff.createdBy.name %></td>
+                <td><%= completedTakeoff.builder?.name %></td>
+                <td><%= completedTakeoff.createdBy?.name %></td>
               <% if (user.role < 200) { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= completedTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= completedTakeoff._id %>"><i class="fas fa-solid fa-eye fa-xl"></i></i></a></td>
               <% } else { %>
-                <td><a class="hover-dark action-button" href="/portal/takeoffs/<%= completedTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
+                <td><a class="action-button" href="/portal/takeoffs/<%= completedTakeoff._id %>/edit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></a></td>
               <% } %>
             </tr>
         <% }) %>

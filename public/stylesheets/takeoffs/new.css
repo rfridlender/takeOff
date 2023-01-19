@@ -28,3 +28,13 @@
   justify-content: center;
   align-items: center;
 }
+
+th {
+  border-bottom: 1px solid var(--color-2-opacity);
+  background-color: var(--color-4);
+}
+
+td {
+  background-color: var(--color-3-opacity);
+  border-radius: .25rem;
+}

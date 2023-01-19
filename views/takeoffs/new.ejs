@@ -92,9 +92,9 @@
           </td>
           <td colspan="2">
             <div class="lock-count-input">
-              <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
+              <div class="operator hover-primary" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
               <input class="input-short" id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" value="0" min="0" required autocomplete="off">
-              <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
+              <div class="operator hover-primary" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
             </div>
           </td>
         </tr>
