@@ -10,11 +10,11 @@ Prior to the development of *takeOff*, Door2Door was forced to transcribe a take
 
 *takeOff* is a simple yet versatile solution to this problem. With *takeOff*, a takeoff can be recorded through the use of a mobile device while walking the jobsite, and that takeoff is now available for all owners and employees to view in order to carry out their step of the process, without the need for unnecessary and often ineffective communication.
 
-## [View the planning materials here](https://trello.com/b/5nzGqCBG/takeoff-planning-materials)
-
 ## [Visit the app here](https://takeoff.fly.dev/)
 
-## Technologies used:
+## [View the planning materials here](https://trello.com/b/5nzGqCBG/takeoff-planning-materials)
+
+## Technologies Used
 
 - MongoDB
 - Express
