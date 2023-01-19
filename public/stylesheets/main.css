@@ -105,16 +105,11 @@ main {
   max-width: 1440px;
 }
 
-@media (max-width: 1488px) and (min-width: 480px) {
-  main {
-    margin: 5rem 1rem 1rem 1rem;
-  }
-}
-
-input, select{
+input, select, input[type=checkbox] + label {
   font-family: inherit;
+  height: 2rem;
   font-size: 1rem;
-  padding: .5rem;
+  padding: 0 .5rem;
   border: none;
   text-align: center;
   border-radius: 2rem;

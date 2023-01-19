@@ -21,23 +21,23 @@
       </tr>
       <tr>
         <form action="/portal/assets/builders" method="POST">
-          <td><input type="text" name="name" required placeholder="Builder Builder" autocomplete="off"></td>
-          <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" autocomplete="off"></td>
-          <td><input type="email" name="email" placeholder="builder@builder.com" autocomplete="off"></td>
-          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-user-plus fa-2xl"></i></button></td>
+          <td><input class="input-long" type="text" name="name" required placeholder="Builder Builder" autocomplete="off"></td>
+          <td><input class="input-long" type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" autocomplete="off"></td>
+          <td><input class="input-long" type="email" name="email" placeholder="builder@builder.com" autocomplete="off"></td>
+          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-user-plus fa-xl"></i></button></td>
         </form>
         <td></td>
       </tr>
       <% builders.forEach(builder => { %>
         <tr>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=PUT" method="POST">
-            <td><input type="text" name="name" required value="<%= builder.name %>" autocomplete="off"></td>
-            <td><input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>" autocomplete="off"></td>
-            <td><input type="email" name="email" value="<%= builder.email %>" autocomplete="off"></td>
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
+            <td><input class="input-long" type="text" name="name" required value="<%= builder.name %>" autocomplete="off"></td>
+            <td><input class="input-long" type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= builder.phoneNumber %>" autocomplete="off"></td>
+            <td><input class="input-long" type="email" name="email" value="<%= builder.email %>" autocomplete="off"></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></button></td>
           </form>
           <form action="/portal/assets/builders/<%= builder._id %>?_method=DELETE" method="POST">
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-xl"></i></button></td>
           </form>
         </tr>
       <% }) %>
@@ -59,7 +59,7 @@
       </tr>
       <tr>
         <form action="/portal/assets/locks" method="POST">
-          <td><input type="text" name="name" required placeholder="Brand Style" autocomplete="off"></td>
+          <td><input class="input-long" type="text" name="name" required placeholder="Brand Style" autocomplete="off"></td>
           <td>
             <table>
               <tbody>
@@ -108,14 +108,14 @@
               </tbody>
             </table>
           </td>
-          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-plus fa-2xl"></i></button></td>
+          <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-plus fa-xl"></i></button></td>
           <td></td>
         </form>
       </tr>
       <% locks.forEach(lock => { %>
         <tr>
           <form action="/portal/assets/locks/<%= lock._id %>?_method=PUT" method="POST">
-            <td><input type="text" name="name" required value="<%= lock.name %>" autocomplete="off"></td>
+            <td><input class="input-long" type="text" name="name" required value="<%= lock.name %>" autocomplete="off"></td>
             <td>
               <table>
                 <tbody>
@@ -164,10 +164,10 @@
                 </tbody>
               </table>
             </td>
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-xl"></button></td>
           </form>
           <form action="/portal/assets/locks/<%= lock._id %>?_method=DELETE" method="POST">
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-xl"></i></button></td>
           </form>
         </tr>
       <% }) %>
@@ -193,7 +193,7 @@
             <td><img src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar"/> %></td>
             <td><%= user.profile.name %></td>
             <td>
-              <select name="role" required>
+              <select class="input-medium" name="role" required>
                     <option value="<%= user.role %>"><%= user.role < 100 ? 'Foreign User' : user.role < 200 ? 'Employee' : 'Admin' %></option>
                 <% possibleRoles.forEach(possibleRole => { %>
                   <% if (possibleRole !== user.role) { %>
@@ -202,10 +202,10 @@
                 <% }) %>
               </select>
             </td>
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-2xl"></i></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-pen-to-square fa-xl"></i></button></td>
           </form>
           <form action="/portal/assets/users/<%= user._id %>?_method=DELETE" method="POST">
-            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-2xl"></i></button></td>
+            <td><button class="action-button hover-dark" type="submit"><i class="fas fa-solid fa-trash fa-xl"></i></button></td>
           </form>
         </tr>
       <% }) %>

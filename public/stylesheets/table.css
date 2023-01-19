@@ -2,17 +2,29 @@ table {
   width: 100%;
 }
 
+.input-short {
+  width: 25%;
+}
+
+.input-medium {
+  width: 50%;
+}
+
+.input-long {
+  width: 75%;
+}
+
 .takeoff-options {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .takeoff-options button {
   font-size: 1rem;
-  border-radius: 2rem;
   padding: 1rem 4rem;
+  border-radius: .25rem;
 }
 
 .action-button {

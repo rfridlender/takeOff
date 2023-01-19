@@ -1,15 +1,26 @@
+.installers-input-td {
+  padding: 0 .5rem;
+}
+
 .installers-input-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  gap: .5rem
+  gap: .5rem;
+  height: 2rem;
+} 
+
+.installers-input {
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .installers-input label {
-  padding: 9px;
-  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .installers-input input[type=checkbox] {

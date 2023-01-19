@@ -21,6 +21,10 @@
 
 .lock-count-input .operator {
   flex: 1;
-  padding: .5rem 2rem;
-  border-radius: 2rem;
+  height: 32px;
+  padding: 0 2rem;
+  border-radius: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

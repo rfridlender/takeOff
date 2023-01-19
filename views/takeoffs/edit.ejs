@@ -33,7 +33,7 @@
       <tr>
         <td>
           <label for="builder-input">Builder:</label>
-          <select name="builder" id="builder-input" required>
+          <select class="input-medium" name="builder" id="builder-input" required>
               <option value="<%= takeoff.builder._id %>"><%= takeoff.builder.name %></option>
             <% builders.forEach(builder => { %>
               <option value="<%= builder._id %>"><%= builder.name %></option>
@@ -57,7 +57,7 @@
       <tr>
         <td>
           <label for="lock-input">Style:</label>
-          <select name="lock" id="lock-input" required>
+          <select class="input-long" name="lock" id="lock-input" required>
               <option value="<%= takeoff.lock._id %>"><%= takeoff.lock.name %></option>
               <% locks.forEach(lock => { %>
                 <option value="<%= lock._id %>"><%= lock.name %></option>
@@ -114,7 +114,7 @@
       <tr>
         <td>
           <label for="job-status-input">Status:</label>
-          <select name="jobStatus" id="job-status-input">
+          <select class="input-medium" name="jobStatus" id="job-status-input">
                 <option value="<%= takeoff.jobStatus %>">
                   <%= takeoff.jobStatus === 0 ? 'Not Started' : takeoff.jobStatus === 1 ? 'In Progress' : 'Completed'%>
                 </option>
@@ -125,7 +125,7 @@
               <% }) %>
           </select>
         </td>
-        <td>
+        <td class="installers-input-td">
           <div class="installers-input-container">
               <label class="installers-input" for="installers-input">Installers:</label>
             <% profiles.forEach(profile => { %>

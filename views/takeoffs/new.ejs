@@ -26,13 +26,13 @@
         </td>
         <td>
           <label for="address-input">Address:</label>
-          <input type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required autocomplete="off">
+          <input class="input-long" type="text" id="address-input" name="address" placeholder="000 Address Street, City, ST 00000" required autocomplete="off">
         </td>
       </tr>
       <tr>
         <td>
           <label for="builder-input">Builder:</label>
-          <select name="builder" id="builder-input" required>
+          <select class="input-medium" name="builder" id="builder-input" required>
             <option>-- Select a Builder --</option>
             <% builders.forEach(builder => { %>
               <option value="<%= builder._id %>"><%= builder.name %></option>
@@ -41,7 +41,7 @@
         </td>
         <td>
           <label for="lockbox-code-input">Lockbox Code:</label>
-          <input type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" autocomplete="off">
+          <input class="input-short" type="text" id="lockbox-code-input" name="lockboxCode" placeholder="0000" autocomplete="off">
         </td>
       </tr>
     </tbody>
@@ -56,7 +56,7 @@
       <tr>
         <td>
           <label for="lock-input">Style:</label>
-          <select name="lock" id="lock-input" required>
+          <select class="input-long" name="lock" id="lock-input" required>
             <option>-- Select a Lock --</option>
               <% locks.forEach(lock => { %>
                 <option value="<%= lock._id %>"><%= lock.name %></option>
@@ -74,7 +74,7 @@
         </td>
         <td>
           <label for="key-number-input">Key Number:</label>
-          <input type="text" id="key-number-input" name="keyNumber" placeholder="00000" autocomplete="off">
+          <input class="input-short" type="text" id="key-number-input" name="keyNumber" placeholder="00000" autocomplete="off">
         </td>
       </tr>
       <tr>
@@ -93,7 +93,7 @@
           <td colspan="2">
             <div class="lock-count-input">
               <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value--"><i class="fas fa-solid fa-minus fa-xl"></i></div>
-              <input id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" value="0" min="0" required autocomplete="off">
+              <input class="input-short" id="<%= possibleLockType.toLowerCase() %>-input" name="lockCount" type="number" value="0" min="0" required autocomplete="off">
               <div class="operator hover-dark" onclick="document.getElementById('<%= possibleLockType.toLowerCase() %>-input').value++"><i class="fas fa-solid fa-plus fa-xl"></i></div>
             </div>
           </td>
