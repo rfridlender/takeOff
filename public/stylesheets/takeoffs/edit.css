@@ -1,0 +1,26 @@
+/* .installers-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: .5rem
+}
+
+.installers-input label {
+  padding: 9px;
+  border-radius: 2rem;
+}
+
+.installers-input input[type=checkbox] {
+  display: none;
+}
+
+.installers-input label:hover {
+  cursor: pointer;
+}
+
+.installers-input input[type=checkbox]:checked + label {
+  background-color: var(--color-3);
+  color: var(--color-1);
+} */

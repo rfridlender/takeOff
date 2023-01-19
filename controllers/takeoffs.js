@@ -1,8 +1,10 @@
 import { Takeoff } from '../models/takeoff.js'
 import { Builder } from '../models/builder.js'
 import { Lock } from '../models/lock.js'
+import { Profile } from '../models/profile.js'
 
 function index(req, res) {
+  if (req.query.search === '') delete req.query.search
   Takeoff.find({})
   .populate('createdBy')
   .populate('builder')
@@ -152,20 +154,28 @@ function edit(req, res) {
     .then(builders => {
       Lock.find({_id: {$nin: takeoff.lock}})
       .then(locks => {
-        res.render('takeoffs/edit', {
-          title: `Takeoff for ${takeoff.address}`,
-          takeoff,
-          builders,
-          locks,
-          possibleFinishes: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D'],
-          possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
-          remainingStatuses: () => {return [0, 1, 2].filter(status => {return status !== takeoff.jobStatus ? true : false})},
-          })
+        Profile.find({})
+        .then(profiles => {
+          res.render('takeoffs/edit', {
+            title: `Takeoff for ${takeoff.address}`,
+            takeoff,
+            builders,
+            locks,
+            profiles,
+            possibleFinishes: ['US3', 'US5', 'US10B', 'US11P', 'US15', 'US15A', 'US19', 'US26', 'US26D', 'US32D'],
+            possibleLockTypes: ['Handleset', 'Interior Trim', 'Entry', 'Deadbolt', 'Passage', 'Privacy', 'Dummy', 'Pocket Passage', 'Pocket Privacy', 'Jumbo Springs', 'Door Saver', 'Door Saver II'],
+            remainingStatuses: () => {return [0, 1, 2].filter(status => {return status !== takeoff.jobStatus ? true : false})},
+            })
         })
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/portal/takeoffs')
+        .catch(err => {
+          console.log(err)
+          res.redirect('/portal/takeoffs')
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/portal/takeoffs')
+      })
     })
     .catch(err => {
       console.log(err)
@@ -179,8 +189,9 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  Takeoff.findByIdAndUpdate(req.params.id, req.body)
-  .then(() => {
+  req.body.installers = req.body.installers ? req.body.installers : []
+  Takeoff.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then((takeoff) => {
     res.redirect('/portal/takeoffs')
   })
   .catch(err => {

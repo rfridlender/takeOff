@@ -1,6 +1,7 @@
 <%- include('../partials/html-head') %>
 <link rel="stylesheet" href="/stylesheets/table.css">
 <link rel="stylesheet" href="/stylesheets/takeoffs/new.css">
+<link rel="stylesheet" href="/stylesheets/takeoffs/edit.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -125,17 +126,23 @@
           </select>
         </td>
         <td>
-          <label for="installers-input">Installers:</label>
-
-          
-          <!-- <input  -->
-          <!-- type="text"  -->
-          <!-- id="installers-input"  -->
-          <!-- name="installers"  -->
-          <%# installers ? `value="${takeoff.installers}"` : 'placeholder="Installer Installer"'%>
-          <!-- > -->
-
-
+          <div class="installers-input-container">
+              <label class="installers-input" for="installers-input">Installers:</label>
+            <% profiles.forEach(profile => { %>
+              <div class="installers-input">
+                <input
+                    type="checkbox"
+                    name="installers"
+                    id="<%= profile._id %>"
+                    value="<%= profile._id %>"
+                  <% takeoff.installers?.forEach(installer => { %>
+                    <%- installer.equals(profile._id) ? 'checked' : '' %>    
+                  <% }) %>
+                >
+                <label class="hover-light" for="<%= profile._id %>"><%= `${profile.name.split(' ')[0]} ${profile.name.split(' ')[1][0]}` %></label>
+              </div>
+            <% }) %>
+          </div>
         </td>
       </tr>
     </tbody>
@@ -146,7 +153,7 @@
     <form action="/portal/takeoffs/<%= takeoff._id %>?_method=DELETE" method="POST">
     <button class="delete-takeoff-button hover-light" type="submit">Delete Takeoff</button>
     </form>
-    <a href="/portal/takeoffs"><button class="hover-light" type="button">Cancel</button></a>
+    <a href="/portal/takeoffs"><button class="hover-dark" type="button">Cancel</button></a>
   </div>
 </main>
 
