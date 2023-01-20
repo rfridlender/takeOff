@@ -1,6 +1,7 @@
 
-![SCREENSHOT 1 CAPTION HERE](./public/screenshots/ASDASDASD.png)
-![SCREENSHOT 2 CAPTION HERE](./public/screenshots/ASDASDASD.png)
+![View of takeoffs index](./public/screenshots/takeoffs-index.png)
+![View when editing a takeoff](./public/screenshots/takeoffs-edit.png)
+![View of assets index](./public/screenshots/assets-index.png)
 
 # takeOff
 
