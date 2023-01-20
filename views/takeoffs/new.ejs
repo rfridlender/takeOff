@@ -33,7 +33,7 @@
         <td>
           <label for="builder-input">Builder:</label>
           <select class="input-medium" name="builder" id="builder-input" required>
-            <option>-- Select a Builder --</option>
+            <option disabled selected>-- Select a Builder --</option>
             <% builders?.forEach(builder => { %>
               <option value="<%= builder._id %>"><%= builder.name %></option>
             <% }) %>
@@ -57,7 +57,7 @@
         <td>
           <label for="lock-input">Style:</label>
           <select class="input-long" name="lock" id="lock-input" required>
-            <option>-- Select a Lock --</option>
+            <option disabled selected>-- Select a Lock --</option>
               <% locks?.forEach(lock => { %>
                 <option value="<%= lock._id %>"><%= lock.name %></option>
               <% }) %>
@@ -66,7 +66,7 @@
         <td>
           <label for="lock-finish-input">Finish:</label>
           <select name="lockFinish" id="lock-finish-input" required>
-              <option>-- Select a Finish --</option>
+              <option disabled selected>-- Select a Finish --</option>
               <% possibleFinishes.forEach(possibleFinish => { %>
                 <option value="<%= possibleFinish %>"><%= possibleFinish %></option>
               <% }) %>
