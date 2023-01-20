@@ -1,6 +1,5 @@
 
 ![View of takeoffs index](./public/screenshots/takeoffs-index.png)
-![View when editing a takeoff](./public/screenshots/takeoffs-edit.png)
 ![View of assets index](./public/screenshots/assets-index.png)
 
 # takeOff
