@@ -34,9 +34,9 @@
         <td>
           <label for="builder-input">Builder:</label>
           <select class="input-medium" name="builder" id="builder-input" required>
-              <option value="<%= takeoff.builder._id %>"><%= takeoff.builder.name %></option>
+              <option value="<%= takeoff.builder?._id %>"><%= takeoff.builder?.name %></option>
             <% builders.forEach(builder => { %>
-              <option value="<%= builder._id %>"><%= builder.name %></option>
+              <option value="<%= builder?._id %>"><%= builder?.name %></option>
             <% }) %>
           </select>
         </td>
@@ -58,9 +58,9 @@
         <td>
           <label for="lock-input">Style:</label>
           <select class="input-long" name="lock" id="lock-input" required>
-              <option value="<%= takeoff.lock._id %>"><%= takeoff.lock.name %></option>
+              <option value="<%= takeoff.lock?._id %>"><%= takeoff.lock?.name %></option>
               <% locks.forEach(lock => { %>
-                <option value="<%= lock._id %>"><%= lock.name %></option>
+                <option value="<%= lock?._id %>"><%= lock?.name %></option>
               <% }) %>
           </select>
         </td>
@@ -128,7 +128,7 @@
         <td class="installers-input-td">
           <div class="installers-input-container">
               <label class="installers-input" for="installers-input">Installers:</label>
-            <% profiles.forEach(profile => { %>
+            <% profiles?.forEach(profile => { %>
               <div class="installers-input">
                 <input
                     type="checkbox"

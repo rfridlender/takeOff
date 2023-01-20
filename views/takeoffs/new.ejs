@@ -34,7 +34,7 @@
           <label for="builder-input">Builder:</label>
           <select class="input-medium" name="builder" id="builder-input" required>
             <option>-- Select a Builder --</option>
-            <% builders.forEach(builder => { %>
+            <% builders?.forEach(builder => { %>
               <option value="<%= builder._id %>"><%= builder.name %></option>
             <% }) %>
           </select>
@@ -58,7 +58,7 @@
           <label for="lock-input">Style:</label>
           <select class="input-long" name="lock" id="lock-input" required>
             <option>-- Select a Lock --</option>
-              <% locks.forEach(lock => { %>
+              <% locks?.forEach(lock => { %>
                 <option value="<%= lock._id %>"><%= lock.name %></option>
               <% }) %>
           </select>

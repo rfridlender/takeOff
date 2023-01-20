@@ -133,6 +133,7 @@ function show(req, res) {
   Takeoff.findById(req.params.id)
   .populate('builder')
   .populate('lock')
+  .populate('installers')
   .then(takeoff => {
     res.render('takeoffs/show', {
       title: `Takeoff for ${takeoff.address}`,
@@ -147,6 +148,7 @@ function show(req, res) {
 }
 
 function create(req, res) {
+  console.log(req.body);
   req.body.createdBy = req.user.profile._id
   Takeoff.create(req.body)
   .then(() => {
