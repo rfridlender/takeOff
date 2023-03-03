@@ -1,8 +1,7 @@
-
 ![View of takeoffs index](./public/screenshots/takeoffs-index.png)
 ![View of assets index](./public/screenshots/assets-index.png)
 
-# takeOff
+## [takeOff](https://takeoff.fly.dev/)
 
 *takeOff* is an app dedicated to optimizing the workflow of Door2Door Builder Services, a subcontracting business in the construction industry dedicated to providing a variety of installation services to builders in remodeling and new construction. The process of providing these services begins by going to a potential builder's jobsite to record a takeoff, a list of materials necessary to complete a job. This takeoff is initially used to create an estimate for a potential builder, used for reference when gathering the materials for the job to send out with the installer, and lastly, used to create a bill for the builder once the job is completed. The takeoff is a mutable document which connects every step of the construction process. 
 
@@ -16,14 +15,15 @@ Prior to the development of *takeOff*, Door2Door was forced to transcribe a take
 
 ## Technologies Used
 
-- MongoDB
-- Express
-- Node.js
-- Mongoose
-- JavaScript
-- EJS
-- CSS
-- Git
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+
+Others: Google OAuth 2.0, EJS, Mongoose
 
 ## Icebox
 
